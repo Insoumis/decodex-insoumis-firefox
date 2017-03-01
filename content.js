@@ -39,11 +39,11 @@
     var removeAfter = 10000; // En milliseconde
 
     var messages = [
-        "Attention, ce site n&rsquo;est pas une source &agrave; proprement parler ou sa fiabilit&eacute; est trop variable pour entrer dans nos crit&egrave;res. Pour en savoir plus, cherchez d&rsquo;autres sources et remontez &agrave; l&rsquo;origine de l&rsquo;information.",
+        "Attention, ce site n&rsquo;est pas ind&eacute;pendant &agrave; proprement parler ou sa soumission est trop variable pour entrer dans nos crit&egrave;res. Cela ne signifie pas que ces informations sont fausses, mais nous vous conseillons de chercher des sources suppl&eacute;mentaires, peut &ecirc;tre d&rsquo;un bord oppos&eacute; &agrave; ce site.",
         "Attention, il s'agit d'un site satirique ou parodique qui n'a pas vocation &agrave; diffuser de vraies informations. A lire au second degr&eacute;.",
-        "Ce site diffuse r&eacute;guli&egrave;rement de fausses informations ou des articles trompeurs. Restez vigilant et cherchez d&rsquo;autres sources plus fiables. Si possible, remontez &agrave; l&rsquo;origine de l&rsquo;information.",
-        "Ce site peut &ecirc;tre r&eacute;guli&egrave;rement impr&eacute;cis, ne pr&eacute;cisant pas ses sources et reprenant des informations sans v&eacute;rification. Soyez prudent et cherchez d&rsquo;autres sources.",
-        "Ce site est en principe plutôt fiable. N’hésitez pas à confirmer l’information en cherchant d’autres sources fiables ou en remontant à son origine."
+        "Ce site diffuse r&eacute;guli&egrave;rement des informations biais&eacute;es (orient&eacute;es trop &agrave; gauche ou trop &agrave; droite). Il se peut m&ecirc;me que certaines informations soient fausses ou que le titre raccoleur soit en contradiction avec le contenu de l&rsquo;article. Restez vigilant et cherchez d&rsquo;autres sources plus fiables. Si possible, remontez &agrave; l&rsquo;origine de l&rsquo;information, ou cherchez l&rsquo;information sur un m&eacute;dia d&rsquo;un bord oppos&eacute;.",
+        "Ce site peut r&eacute;guli&egrave;rement diffuser des informations orient&eacute;es (&agrave; gauche ou &agrave; droite), impr&eacute;cise voir sans v&eacute;ritable sources. Il est &eacute;galement possible que certains journalistes s&rsquo;auto-censurent, soient soumis ou de mauvaise foi, ou souffrent de l&eacute;gers biais de confirmation (ce qui n&rsquo;est pas grave, cela nous arrive &agrave; tous.",
+        "Ce site est en principe plutôt ind&eacute;pendant, voir non soumis &agrave; a une grande fortune ou un parti politique. Mais n’hésitez pas à confirmer l’information en cherchant d’autres sources fiables en remontant à son origine, ou encore a lire ce que des m&eacute;dias moins ind&eacute;pendants pensent de cette information."
     ];
 
     var icones = [
