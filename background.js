@@ -38,7 +38,6 @@ var soumis = null;
 var notule = ""
 var active_url = "";
 var debunker = false;
-var soumis = false;
 var clean_url = "";
 
 function onInstall() {
@@ -135,7 +134,7 @@ function debunkSite(u, t, d){
             site_id = urls[u];
             site_actif = sites[site_id][2];
             note = parseInt(sites[site_id][0]);
-            soumis = parseInt(sites[site_id][5]);
+            soumis = parseInt(sites[site_id][4]);
             notule = sites[site_id][1];
             slug = sites[site_id][3];
             browser.browserAction.setIcon({
