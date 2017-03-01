@@ -141,8 +141,8 @@
         clearRemoveTimeout();
         removeElement(infobulle);
 
-        if (request.text.indexOf("debunker") != -1 ){
-            var note = parseInt(request.text.replace('debunker', ''));
+        if (request.text.indexOf("soumis") != -1 ){ // debunker
+            var soumis = parseInt(request.text.replace('soumis', '')); // note
             // Ajout du contenu
 
             forEach(document.querySelectorAll('body *'), function(elem){
@@ -165,7 +165,7 @@
 
             // Ajout du style
             var forceImportant = true;
-            var currentColor = colors[note];
+            var currentColor = colors[soumis]; // note
 
             var reset = {
                 'display': 'block',
@@ -277,12 +277,12 @@
             }], forceImportant);
 
             // Ajout du contenu
-            appendText(title, msg_bandeau[note]);
+            appendText(title, msg_bandeau[soumis]); // note
             appendText(picto, '!');
             appendText(close, 'Fermer');
-            text.innerHTML = messages[note];
+            text.innerHTML = messages[soumis]; // note
             var icone = new Image();
-            icone.src = icones[note];
+            icone.src = icones[soumis]; // note
             css(icone, [reset, {
                 'vertical-align':'middle',
                 'display': 'inline-block'
