@@ -64,7 +64,7 @@ function main() {
     ];
 
     var background = browser.extension.getBackgroundPage();
-    if(background.soumis == true) {
+    if(background.debunker == true) {
         document.querySelector(".content #site-name").innerText = background.site_actif;
         document.querySelector("#notule").innerText = background.notule;
         document.querySelector("#our-opinion").style["color"] = colors[background.soumis];
