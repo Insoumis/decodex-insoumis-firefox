@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
-  "name": "Decodex",
+  "name": "Decodex Insoumis",
   "version": "1.1.4",
-  "description": "Avec le Décodex, évaluez en un clin d’oeil si les sites que vous consultez sont fiables.",
+  "description": "Avec le Décodex Insoumis, apprenez en un clin d’oeil qui se trouve derrière le média que vous être en train de lire !",
   "applications": {
       "gecko": {
-          "id": "lemonde-decodex@lemonde.fr"
+          "id": "decodex-insoumis@insoumis.online"
       }
   },
   "background": {
@@ -18,7 +18,7 @@
   "browser_action" :
   {
     "default_icon" : "icone.png",
-    "default_title" : "Décodex",
+    "default_title" : "Décodex Insoumis",
     "default_popup": "popup.html"
   },
     "content_scripts": [
@@ -33,6 +33,7 @@
     "notifications",
     "activeTab",
     "webRequest",
+
     "http://www.lemonde.fr/webservice/decodex/updates"
   ]
 }
