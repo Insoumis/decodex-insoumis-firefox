@@ -67,8 +67,8 @@ function main() {
     if(background.soumis == true) {
         document.querySelector(".content #site-name").innerText = background.site_actif;
         document.querySelector("#notule").innerText = background.notule;
-        document.querySelector("#our-opinion").style["color"] = colors[background.note];
-        document.querySelector("#our-opinion").innerText = messages[background.note];
+        document.querySelector("#our-opinion").style["color"] = colors[background.soumis];
+        document.querySelector("#our-opinion").innerText = messages[background.soumis];
         document.querySelector("#decodex-window").style.display = "block";
         document.querySelector("#verif").classList.remove("active");
         document.querySelector("#decodex-window").classList.add('active');

@@ -87,6 +87,7 @@ function loadJSON(path, success, error)
 
 function loadData(){
     browser.storage.local.get('last_update', function(results){
+console && console.log('updating datas');
         var new_update = new Date();
         loadJSON(base_url,
              function(data) {
