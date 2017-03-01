@@ -1,7 +1,17 @@
+# Extension
+
 Cette extension est basée sur l'extension «décodex» des décodeurs du monde.
 
 Son but est d'informer le visiteur d'un site internet sur le ou les
 propriétaires du média, quels sont ses intérêts (Construction, Armement, …)
+
+## Test
+
+```
+sudo apt-get install npm
+npm install -g web-ext
+web-ext run
+```
 
 -----
 
