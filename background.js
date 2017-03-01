@@ -70,8 +70,11 @@ function loadJSON(path, success, error)
     {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                if (success)
+                if (success) {
+                    //console && console.info("raw json");
+                    //console && console.log(xhr.responseText);
                     success(JSON.parse(xhr.responseText));
+                }
             } else {
                 if (error)
                     error(xhr);
