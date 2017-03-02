@@ -12,8 +12,9 @@ addons:
 install:
     - npm install -g web-ext
 
-script: web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET}
+script: web-ext build
 
+before_deploy: web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET}
 deploy:
     provider: releases
     api_key: "${GH_TOKEN}"
