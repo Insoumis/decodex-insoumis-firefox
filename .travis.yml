@@ -12,7 +12,7 @@ addons:
 install:
     - npm install -g web-ext
 
-script: web-ext build && mv web-ext-artifacts/*.zip extension.zip
+script: web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET}
 
 deploy:
     provider: releases
