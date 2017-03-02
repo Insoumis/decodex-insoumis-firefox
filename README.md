@@ -60,9 +60,20 @@ décodex insoumis.
 
 ### Remerciements
 
-Les Décodeurs pour avoir 
+* Le Monde Diplomatique,
+qui a fait germé l'idée, grâce à http://www.monde-diplomatique.fr/cartes/ppa
+* Les Décodeurs,
+pour avoir créer leur extension «decodex», certe très simple, mais qui nous a
+servi servi de base de départ (et aussi pour leur travail de décryptage des
+informations, pas si souvent biaisée que ça :) )
 
 
+Bien entendu il est impossible de citer ici tous les journalistes qui se sont
+un jour trompé dans leur article, tous les journaux qui nous ont tant de fois
+encouragé à faire un tel outil à travers leur une ou leur traitement de
+l'information. Nous leur laisson le soin de s'y reconnaitre. S'ils souhaitent
+que l'on rajoute leur nom ou celui de leur journal aux remerciement, qu'ils
+n'hésitent pas à nous contacter.
 
 -----
 
