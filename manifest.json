@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Decodex Insoumis",
   "version": "1.1.4.1",
-  "description": "Avec le Décodex Insoumis, apprenez en un clin d’oeil qui se trouve derrière le média que vous être en train de lire !",
+  "description": "Avec le D&eacute;codex Insoumis, apprenez en un clin d’oeil qui se trouve derri&egrave;re le m&eacute;dia que vous &ecirc;tre en train de lire !",
   "applications": {
       "gecko": {
           "id": "decodex-insoumis@insoumis.online"
@@ -18,7 +18,7 @@
   "browser_action" :
   {
     "default_icon" : "icone.png",
-    "default_title" : "Décodex Insoumis",
+    "default_title" : "D&eacute;codex Insoumis",
     "default_popup": "popup.html"
   },
     "content_scripts": [
