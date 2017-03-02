@@ -21,6 +21,3 @@ deploy:
     skip_cleanup: true
     on:
         tags: true
-
-user:12557732:593
-c01254fd924abdd447b821d7d002eb39782b6aac25506bdc89c992fe9e4e9b4a
