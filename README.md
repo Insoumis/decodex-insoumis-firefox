@@ -13,6 +13,16 @@ npm install -g web-ext
 web-ext run
 ```
 
+## Alternative
+
+1) git clone https://github.com/Insoumis/decodex-firefox (ou télécharger la
+derniere version et la décompresser)
+2) aller sur about:debugging
+3) charger l'extension temporairement (le fichier manifest.json)
+
+
+
+
 -----
 
 You'll need to develop your own backend to send data in JSON array. Alternatively, you may also modify it and store your data in the extension.
