@@ -1,0 +1,22 @@
+sudo: false
+dist: trusty
+language: node_js
+
+cache: apt
+
+addons:
+  firefox: "51.0"
+
+install:
+    - npm install -g web-ext
+
+script: web-ext build && mv web-ext-artifacts/*.zip extension.zip
+
+deploy:
+    provider: releases
+    api_key: "${GH_TOKEN}"
+    file: "extension.zip"
+    skip_cleanup: true
+    on:
+        tags: true
+
