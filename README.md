@@ -51,6 +51,16 @@ derniere version et la décompresser)
 3) charger l'extension temporairement (le fichier manifest.json)
 
 
+## Installer la version de développement avec un fichier .xpi (zip) non signé
+
+(attention, réservé aux développeurs)
+
+aller à l'url <a href="about:config">about:config</a> Pour désactiver la
+vérification des signatures des extensions «validées par Mozilla».
+Cherchez la clef <code>xpinstall.signatures.required</code> et mettez la
+valeur à <code>true</code>
+
+
 ### Convention du numéro de version
 
 Les 3 premiers chiffres correspondent au numéro de version du decodex original
