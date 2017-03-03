@@ -167,7 +167,7 @@ function debunkSite(u, t, d){
         }
         var today = new Date();
         if(true || (today.getTime() - results.last_update)/1000/60/60 >= 24) {
-			console && console.log("refresh"):
+			console && console.log("refresh everytime (change me for prod)"):
             loadData();
         }
     });

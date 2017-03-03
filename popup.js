@@ -52,7 +52,7 @@ function bulleStore(e){
 }
 
 function main() {
-	console && console.log('start main');
+	console && console.log('start main in popup.js');
 
     var messages = [
         // gris
