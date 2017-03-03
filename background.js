@@ -42,7 +42,7 @@ var clean_url = "";
 
 var proprietaires = '';
 var interets      = '';
-var influences    = '';
+var conflits      = '';
 var subventions   = '';
 var sources       = '';
 
@@ -155,7 +155,7 @@ function debunkSite(u, t, d){
                 slug = sites[site_id][3];                      // nom normalisé
                 proprietaires = sites[site_id][5];             // propriétaires
                 interets = sites[site_id][6];                  // intérets
-                influences = sites[site_id][7];                // exemple d'influences / complicité idéologique
+                conflits = sites[site_id][7];                  // exemple de conflits / complicité idéologique
                 subventions = sites[site_id][8];               // Montant des subventions d'état
                 sources = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
             } catch(e) {

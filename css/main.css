@@ -89,6 +89,10 @@ a.more:after, .button.more:after{
 	line-height: 1.43;
 }
 
+.label {
+    font-weight: bold;
+}
+
 .satirical header{ background: #129AF0; }
 .complotist header{ background: #D50303; }
 .dubious header{ background: #F5A725; }
