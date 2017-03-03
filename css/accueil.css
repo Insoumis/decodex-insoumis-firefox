@@ -83,11 +83,11 @@ header{
 	font-size: 0.875em;
 }
 
-.lemonde{
+.insoumis{
 	display: inline-block;
 	width: 100px;
 	height: 20px;
-	background-image: url('../img/lemonde@2x-min.png');
+	background-image: url('../img/insoumis@2x-min.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 100%;
@@ -169,14 +169,32 @@ label{
 	overflow: hidden;
 }
 
-.collaboratif, .parodique, .tres-peu-fiable, .peu-fiable, .plutot-fiable{
+/*.collaboratif, .parodique, .tres-peu-fiable, .peu-fiable, .plutot-fiable*/
+.inconnu, .carrement-soumis, .plutot-soumis, .plutot-insoumis, .media-insoumis, .france-insoumise
+{
 	text-align: left;
 	display: block;
 }
 
-.collaboratif{
-	color: #5d666d;
+.inconnu{
+    color: #5d666d;
 }
+.carrement-soumis {
+	color: #D50303;
+}
+.plutot-soumis{
+	color: #F5A725;
+}
+.plutot-insoumis{
+	color: #129AF0;
+}
+.insoumis{
+	color: #468847;
+}
+.france-insoumise{
+	color: #468847;
+}
+
 .parodique{
 	color: #129AF0;
 }
@@ -243,7 +261,7 @@ label{
 		float: right;
 	}
 
-	.lemonde{
+	.insoumis{
 		width: 130px;
 		height: 28px;
 	}
