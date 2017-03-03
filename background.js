@@ -179,10 +179,12 @@ function debunkSite(u, t, d){
             });
         }
         var today = new Date();
-        if(true || (today.getTime() - results.last_update)/1000/60/60 >= 24) {
-			console && console.log("refresh everytime (change me for prod)");
+        if((today.getTime() - results.last_update)/1000/60/60 >= 1) {
+			console && console.log("refresh every hour");
             loadData();
-        }
+        } else {
+			console && console.log("data found in cache");
+		}
     });
 }
 
