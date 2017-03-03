@@ -107,12 +107,12 @@
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAIGSURBVHjapNQ5aBVRFMbxX/RpCiuLDGjhElxAMTGIG3YKFrFUI24gQuAaMDbayFgIg4XRRgvHxgWDEsQoiGBlFQIKKtgoiKggLuNCwEbiEpv7YDJ5SQRPc+52/ue7y7lNY2NjGlmWJ23Yhc1YiKc4kIbisyms1gDUjNMImF2amoc1uD8VsKmsMMuTORjAtjj0AS0x8TusjIr3oRXfcCUNRX+dMaOS4FQJdiaqrOEXenACt7EdHdiCa1meHJ4AzPKkPQbBhTQUx3APR6KqDThan8cODMZ+X5Ynq6oK95e2dhzSUPxOQ3EOb3AsrjubhqInDcUt7MYTNMfdjANuiv5OGoqRylH0Yhbe42R9MA3FKK6X48vA1uhfVG69hs5Ssu+VZK+jn18Fzoz+ZyVgMZbG9mCDl1KPG6sCP5beW9k64nZH8KwBcFk5vgwcir6zErC2tLUvleOYiZ2x+6gK7I+y12V50l0aXxT9qzQU1TrtQTv+4PI4YBqKoVglcD7Lk67YbqkDK+r2oq8uJg3FcKNa7sUKtGEgy5OtWBLnvmZ5MhsbcSh+HPAwPv6JtRwzL4jyN1eSvcUPLC+N3UV3GopPkwJLh30wKlmNptL0KB7jYhqKq1P+Ng3ANQzHm76JS/FyXv7T9zUJdABduJGGYo9pbIbp7Xn06+Ol/DfwQfxIa5g73eK/AwCsf5zapnlOZAAAAABJRU5ErkJggg=="
     ];
     var msg_bandeau = [
-        "Inconnu",
-        "Média carrément soumis !",
-        "Média plutôt soumis",
-        "Média plutôt insoumis",
-        "Média Insoumis : Bravo !",
-        "France Insoumise  \\o/"
+        "Inconnu",                   // gris
+        "Média carrément soumis !",  // rouge
+        "Média plutôt soumis",       // jaune
+        "Média plutôt insoumis",     // bleu
+        "Média Insoumis : Bravo !",  // vert
+        "France Insoumise  \\o/"     // INSOUMIS AUSSI :D
     ];
 
     var heights = [213, 180, 212, 203, 213];
