@@ -52,7 +52,7 @@ function bulleStore(e){
 }
 
 function main() {
-	console && console.log('start main');
+	console && console.log('start main in popup.js');
 
     var messages = [
         // gris
@@ -99,11 +99,12 @@ function main() {
         "#D50303", // jaune
         "#129AF0", // bleu
         "#468847", // vert
-        "#468847"  // INSOUMIS AUSSI :)
+        "#468847"  // INSOUMIS AUSSI :D
     ];
 
     var background = browser.extension.getBackgroundPage();
     if(background.debunker == true) {
+        // TODO afficher les infos manquantes avec popup.js et popup.html
         document.querySelector(".content #site-name").innerText = background.site_actif;
         document.querySelector("#notule").innerText = background.notule;
         document.querySelector("#our-opinion").style["color"] = colors[background.soumission];
