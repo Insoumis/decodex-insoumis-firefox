@@ -40,11 +40,11 @@ var active_url = "";
 var debunker = false;
 var clean_url = "";
 
-var owners      = '';
-var interest    = '';
-var exemples    = '';
-var subventions = '';
-var sources     = '';
+var proprietaires = '';
+var interets      = '';
+var influences    = '';
+var subventions   = '';
+var sources       = '';
 
 
 function onInstall() {
@@ -138,7 +138,10 @@ function youtubeChannel(u){
 
 function debunkSite(u, t, d){
     console && console.log('debunk site ', u);
+	// TODO: rajouter les champs manquants
     browser.storage.local.get(['urls', "sites", "already_visited", "infobulles", "last_update"], function(results){
+		console && console.info("debunkSite : var results");
+		console && console.log(results);
         urls = results.urls;
         sites = results.sites;
         debunker = urls.hasOwnProperty(u);
@@ -154,7 +157,7 @@ function debunkSite(u, t, d){
                 interets = sites[site_id][6];                  // intérets
                 influences = sites[site_id][7];                // exemple d'influences / complicité idéologique
                 subventions = sites[site_id][8];               // Montant des subventions d'état
-                sources = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace
+                sources = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
             } catch(e) {
                 console && console.error(e);
             }
@@ -177,7 +180,7 @@ function debunkSite(u, t, d){
         }
         var today = new Date();
         if(true || (today.getTime() - results.last_update)/1000/60/60 >= 24) {
-			console && console.log("refresh everytime (change me for prod)"):
+			console && console.log("refresh everytime (change me for prod)");
             loadData();
         }
     });
