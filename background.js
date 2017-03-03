@@ -71,7 +71,7 @@
                                ,:`
 */
 
-var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
+var _debug = 2; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
 if (_debug) {
     console && console.warn("DEBUG LEVEL", _debug);
 }
