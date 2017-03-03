@@ -32,6 +32,7 @@
                       ╙▀                ▀`                     ▀▀
  */
 var base_url = "http://decodex.insoumis.online/decodex_data.json";
+var always_refresh = true;
 var urls = "";
 var note = null;
 var soumission = null;
@@ -158,8 +159,11 @@ function debunkSite(u, t, d){
                 conflits = sites[site_id][7];                  // exemple de conflits / complicité idéologique
                 subventions = sites[site_id][8];               // Montant des subventions d'état
                 sources = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
+                console && console.info("tout s'est bien passé", sites[site_id]);
             } catch(e) {
+                console && console.error("ERREUR DEBUNKER");
                 console && console.error(e);
+                console && console.log(sites[site_id]);
             }
             browser.browserAction.setIcon({
                 path: "img/icones/icon" + (soumission) + ".png", // note
@@ -173,13 +177,14 @@ function debunkSite(u, t, d){
             }
         }
         else {
+			console && console.log("site non trouvé");
             browser.browserAction.setIcon({
                 path: "icone.png",
                 tabId: t
             });
         }
         var today = new Date();
-        if((today.getTime() - results.last_update)/1000/60/60 >= 1) {
+        if(always_refresh || (today.getTime() - results.last_update)/1000/60/60 >= 1) {
 			console && console.log("refresh every hour");
             loadData();
         } else {

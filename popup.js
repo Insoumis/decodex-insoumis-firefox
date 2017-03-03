@@ -110,10 +110,10 @@ function main() {
         document.querySelector("#our-opinion").style["color"] = colors[background.soumission];
         document.querySelector("#our-opinion").innerText = messages[background.soumission];
 
-        document.querySelector("#owner span.content").innerText = messages[background.proprietaires];
-        document.querySelector("#interests span.content").innerText = messages[background.interets];
-        document.querySelector("#conflicts span.content").innerText = messages[background.conflits];
-        document.querySelector("#subsidies span.content").innerText = messages[background.subventions];
+        document.querySelector("#owner span.content").innerText = background.proprietaires;
+        document.querySelector("#interests span.content").innerText = background.interets;
+        document.querySelector("#conflicts span.content").innerText = background.conflits;
+        document.querySelector("#subsidies span.content").innerText = background.subventions;
 
         document.querySelector("#decodex-window").style.display = "block";
         document.querySelector("#verif").classList.remove("active");
