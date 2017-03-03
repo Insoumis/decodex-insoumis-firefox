@@ -11,16 +11,17 @@
             <h1>Décodex Insoumis</h1>
             <button class="options" id="params"><svg aria-hidden="true" id="parametres" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><style type="text/css">.gear{fill:#a2a9ae;}</style><path class="gear" d="M20,11.4V8.6l-2.4-0.7c-0.2-0.6-0.4-1.2-0.7-1.8l1.2-2.2l-2-2l-2.2,1.2c-0.6-0.3-1.1-0.6-1.8-0.7 L11.4,0H8.6L7.9,2.4C7.3,2.6,6.7,2.9,6.1,3.2L3.9,1.9l-2,2l1.2,2.2C2.9,6.7,2.6,7.3,2.4,7.9L0,8.6v2.8l2.4,0.7 c0.2,0.6,0.4,1.2,0.7,1.8l-1.2,2.2l2,2l2.2-1.2c0.6,0.3,1.1,0.6,1.8,0.7L8.6,20h2.8l0.7-2.4c0.6-0.2,1.2-0.4,1.8-0.7l2.2,1.2l2-2 l-1.2-2.2c0.3-0.6,0.6-1.1,0.7-1.8L20,11.4z M10,14.7c-2.6,0-4.7-2.1-4.7-4.7S7.4,5.3,10,5.3s4.7,2.1,4.7,4.7S12.6,14.7,10,14.7z"/></svg><span>Paramères</span></button>
         </header>
-        <div class="content" id="decodex-window">
+        <div class="content" id="decodex-insoumis-window">
             <h2 id="site-name"></h2>
             <p id="notule"></p>
             <h2>Ce site est-il fiable ?</h2>
             <p id="our-opinion" class="our-opinion"></p>
+            <!-- @TODO: le design. Faire plus tableau ? -->
             <div id="owner"><span class="label">Propriétaire : </span><span class="content"></span></div>
             <div id="interests"><span class="label">Intérêts : </span><span class="content"></span></div>
             <div id="conflicts"><span class="label">Exemples de conflits : </span><span class="content"></span></div>
-            <div id="subsidies"><span class="label">Subventions (en euros en 2005)</span><span class="content"></span></div>
-            <a id="more-info" class="button more">En savoir plus</a>
+            <div id="subsidies"><span class="label">Subventions (en euros en 2015)</span><span class="content"></span></div>
+            <a id="more-info-insoumis" class="button more">En savoir plus</a>
         </div>
         <div class="content" id="parameters">
             <h2 class="title-params">Paramètres</h2>
@@ -49,9 +50,8 @@
                     <input id="check-alert5" type="checkbox">
                     <label for="check-alert5">France Insoumise</label>
                 </div>
-                <!-- @TODO: rajouter les div id=interets, id=owner, etc... -->
         </div>
-        <div class="content" id="verif">
+        <div class="content" id="verif-insoumis">
             <p class="our-opinion">
                 Nous n’avons pas encore vérifié ce site. Aidez-nous à améliorer le Décodex en remplissant le formulaire accessible en cliquant sur le bouton ci-dessous.
             </p>

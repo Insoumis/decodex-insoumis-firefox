@@ -154,16 +154,16 @@ function main() {
         document.querySelector("#conflicts span.content").innerText = background.conflits;
         document.querySelector("#subsidies span.content").innerText = background.subventions;
 
-        document.querySelector("#decodex-window").style.display = "block";
-        document.querySelector("#verif").classList.remove("active");
-        document.querySelector("#decodex-window").classList.add('active');
-        document.querySelector("#more-info").href = "http://decodex.insoumis.online/about.html";
+        document.querySelector("#decodex-insoumis-window").style.display = "block";
+        document.querySelector("#verif-insoumis").classList.remove("active");
+        document.querySelector("#decodex-insoumis-window").classList.add('active');
+        document.querySelector("#more-info-insoumis").href = "http://decodex.insoumis.online/about.html";
     }
     else {
-        document.querySelector("#verif").style.display = "block";
-        document.querySelector("#decodex-window").classList.remove('active');
-        document.querySelector("#verif").classList.add("active");
-        document.querySelector("#decodex-window").style.display = "none";
+        document.querySelector("#verif-insoumis").style.display = "block";
+        document.querySelector("#decodex-insoumis-window").classList.remove('active');
+        document.querySelector("#verif-insoumis").classList.add("active");
+        document.querySelector("#decodex-insoumis-window").style.display = "none";
 
     }
 
@@ -191,7 +191,7 @@ function main() {
                 }
             }
     });
-    document.querySelector('#more-info').addEventListener('click', function(e){
+    document.querySelector('#more-info-insoumis').addEventListener('click', function(e){
         if(e.target.href!==undefined){
             browser.tabs.create({url:e.target.href});
         }
