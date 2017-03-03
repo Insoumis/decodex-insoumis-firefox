@@ -106,8 +106,8 @@ function main() {
     if(background.debunker == true) {
         document.querySelector(".content #site-name").innerText = background.site_actif;
         document.querySelector("#notule").innerText = background.notule;
-        document.querySelector("#our-opinion").style["color"] = colors[background.soumis];
-        document.querySelector("#our-opinion").innerText = messages[background.soumis];
+        document.querySelector("#our-opinion").style["color"] = colors[background.soumission];
+        document.querySelector("#our-opinion").innerText = messages[background.soumission];
         document.querySelector("#decodex-window").style.display = "block";
         document.querySelector("#verif").classList.remove("active");
         document.querySelector("#decodex-window").classList.add('active');
