@@ -160,7 +160,8 @@ function debunkSite(u, t, d){
             });
         }
         var today = new Date();
-        if((today.getTime() - results.last_update)/1000/60/60 >= 24) {
+        if(true || (today.getTime() - results.last_update)/1000/60/60 >= 24) {
+			console && console.log("refresh"):
             loadData();
         }
     });

@@ -48,7 +48,7 @@
         // bleu
         "Ce média reçoit peu de subvention de la part de l'état et ne dépend pas ou peu de recettes publicitaires. Aucun média n'est indépendant ou neutre à 100%, mais celui là est peut être moins influencé par les sphères financières ou politique que les autres. Vous pouvez si vous le souhaitez comparer la même information avec un média un peu plus soumis à l'oligarchie ou au capital, ça peut vous surprendre !",
         // vert
-        "Bravo ! Ce média appartient en totalité à ses rédacteurs et ne fait aucune recette publicitaire ! De plus, il ne bénéficie pas ou très peu de subventions publicitaires (inférieures à 20 000 € / an). L'indépendance éditoriale est nécessaire pour une information de qualité. Merci à eux, et merci à vous de les lire ! Vous pouvez si vous le souhaitez comparer la même information avec un média un peu plus soumis à l'oligarchie ou au capital, ça peut vous surprendre !"
+        "Bravo ! Ce média appartient en totalité à ses rédacteurs et ne fait aucune recette publicitaire ! De plus, il ne bénéficie pas ou très peu de subventions publicitaires (inférieures à 20 000 € / an). L'indépendance éditoriale est nécessaire pour une information de qualité. Merci à eux, et merci à vous de les lire ! Vous pouvez si vous le souhaitez comparer la même information avec un média un peu plus soumis à l'oligarchie ou au capital, ça peut vous surprendre !",
         // insoumis !
         "Hé hé, on va pas vous mentir hein : Vous êtes sur un site clairement partisan des Insoumis ! Donc de notre point de vue, c'est un chouette site, vous pouvez lire tout ce que vous y trouvez, et comparer les informations avec des sites un peu plus soumis à l'oligarchie pour voir la différence de traitement !"
     ];
@@ -63,7 +63,7 @@
         // bleu
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAIHSURBVHjapNQ9iJVHFMbx3+veaJEqxRZJoWaJCkr8mOBHCFhsIYx2wSiSBIKwYLbYNNqks3W1UIslTaKwCIsoCSFcKxtlIYKvYGMghCQQYoIaFmzErI7NWZh9vXstnObM1/mfZ+bMmaaUYlBr+u1WHMY41uEOvig5PTCk9QaA1uAUjmF1tfQ2PsC1YcCmVtj02zcxhwMxdR+jEfgvbAnFn2EM/+FCyWl2JeBZTMXwNG7gByziY+zF8QHCpkpO52FVBduGyRjOlJxO4Cd8Far2VLAZHMTVGE83/fb9ZUB8Xh3tayg5PSs5ncMfOBH7zpScJktOV3AELdbEnS8DfhT2+5LTQvdIeAN/4+TSZMnpKS7V/jVwLOwvnaz3sL8K9rgT7Pew73SBI2H/7zi8iw3RvzogIUt+pQv8p3pvddsRx13A3QHAjbV/DbwZdn/HYWd1tIed6xjBJzG81QXOhuxdTb+dqObXh/2t5NSt00lsw3N8twxYcroZVQLnm357KPqjS8COuk8xvSSm5DQ/qJansBlbMdf02314L9YeNf12NT7El/FxwM/x+F8uvYi8NuSPd4L9iSfYVM39iImS078rAqvLPhpKtqOplp/iNr4pOV0c+tsMAPcwH5m+jG8jOb+u5LNq2N9WclqsKmGx5HRtGOyVwGj3wu6OpHhd4PX4SHt461WbXwwABPGiThCuZUYAAAAASUVORK5CYII=",
         // vert
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAIGSURBVHjapNQ5aBVRFMbxX/RpCiuLDGjhElxAMTGIG3YKFrFUI24gQuAaMDbayFgIg4XRRgvHxgWDEsQoiGBlFQIKKtgoiKggLuNCwEbiEpv7YDJ5SQRPc+52/ue7y7lNY2NjGlmWJ23Yhc1YiKc4kIbisyms1gDUjNMImF2amoc1uD8VsKmsMMuTORjAtjj0AS0x8TusjIr3oRXfcCUNRX+dMaOS4FQJdiaqrOEXenACt7EdHdiCa1meHJ4AzPKkPQbBhTQUx3APR6KqDThan8cODMZ+X5Ynq6oK95e2dhzSUPxOQ3EOb3AsrjubhqInDcUt7MYTNMfdjANuiv5OGoqRylH0Yhbe42R9MA3FKK6X48vA1uhfVG69hs5Ssu+VZK+jn18Fzoz+ZyVgMZbG9mCDl1KPG6sCP5beW9k64nZH8KwBcFk5vgwcir6zErC2tLUvleOYiZ2x+6gK7I+y12V50l0aXxT9qzQU1TrtQTv+4PI4YBqKoVglcD7Lk67YbqkDK+r2oq8uJg3FcKNa7sUKtGEgy5OtWBLnvmZ5MhsbcSh+HPAwPv6JtRwzL4jyN1eSvcUPLC+N3UV3GopPkwJLh30wKlmNptL0KB7jYhqKq1P+Ng3ANQzHm76JS/FyXv7T9zUJdABduJGGYo9pbIbp7Xn06+Ol/DfwQfxIa5g73eK/AwCsf5zapnlOZAAAAABJRU5ErkJggg=="
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAIGSURBVHjapNQ5aBVRFMbxX/RpCiuLDGjhElxAMTGIG3YKFrFUI24gQuAaMDbayFgIg4XRRgvHxgWDEsQoiGBlFQIKKtgoiKggLuNCwEbiEpv7YDJ5SQRPc+52/ue7y7lNY2NjGlmWJ23Yhc1YiKc4kIbisyms1gDUjNMImF2amoc1uD8VsKmsMMuTORjAtjj0AS0x8TusjIr3oRXfcCUNRX+dMaOS4FQJdiaqrOEXenACt7EdHdiCa1meHJ4AzPKkPQbBhTQUx3APR6KqDThan8cODMZ+X5Ynq6oK95e2dhzSUPxOQ3EOb3AsrjubhqInDcUt7MYTNMfdjANuiv5OGoqRylH0Yhbe42R9MA3FKK6X48vA1uhfVG69hs5Ssu+VZK+jn18Fzoz+ZyVgMZbG9mCDl1KPG6sCP5beW9k64nZH8KwBcFk5vgwcir6zErC2tLUvleOYiZ2x+6gK7I+y12V50l0aXxT9qzQU1TrtQTv+4PI4YBqKoVglcD7Lk67YbqkDK+r2oq8uJg3FcKNa7sUKtGEgy5OtWBLnvmZ5MhsbcSh+HPAwPv6JtRwzL4jyN1eSvcUPLC+N3UV3GopPkwJLh30wKlmNptL0KB7jYhqKq1P+Ng3ANQzHm76JS/FyXv7T9zUJdABduJGGYo9pbIbp7Xn06+Ol/DfwQfxIa5g73eK/AwCsf5zapnlOZAAAAABJRU5ErkJggg==",
         // vert
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAIGSURBVHjapNQ5aBVRFMbxX/RpCiuLDGjhElxAMTGIG3YKFrFUI24gQuAaMDbayFgIg4XRRgvHxgWDEsQoiGBlFQIKKtgoiKggLuNCwEbiEpv7YDJ5SQRPc+52/ue7y7lNY2NjGlmWJ23Yhc1YiKc4kIbisyms1gDUjNMImF2amoc1uD8VsKmsMMuTORjAtjj0AS0x8TusjIr3oRXfcCUNRX+dMaOS4FQJdiaqrOEXenACt7EdHdiCa1meHJ4AzPKkPQbBhTQUx3APR6KqDThan8cODMZ+X5Ynq6oK95e2dhzSUPxOQ3EOb3AsrjubhqInDcUt7MYTNMfdjANuiv5OGoqRylH0Yhbe42R9MA3FKK6X48vA1uhfVG69hs5Ssu+VZK+jn18Fzoz+ZyVgMZbG9mCDl1KPG6sCP5beW9k64nZH8KwBcFk5vgwcir6zErC2tLUvleOYiZ2x+6gK7I+y12V50l0aXxT9qzQU1TrtQTv+4PI4YBqKoVglcD7Lk67YbqkDK+r2oq8uJg3FcKNa7sUKtGEgy5OtWBLnvmZ5MhsbcSh+HPAwPv6JtRwzL4jyN1eSvcUPLC+N3UV3GopPkwJLh30wKlmNptL0KB7jYhqKq1P+Ng3ANQzHm76JS/FyXv7T9zUJdABduJGGYo9pbIbp7Xn06+Ol/DfwQfxIa5g73eK/AwCsf5zapnlOZAAAAABJRU5ErkJggg=="
     ];
@@ -73,7 +73,7 @@
         "Média plutôt soumis",
         "Média plutôt insoumis",
         "Média Insoumis : Bravo !",
-        "France Insoumise  \\o/",
+        "France Insoumise  \\o/"
     ];
 
     var heights = [213, 180, 212, 203, 213];
@@ -82,11 +82,11 @@
         "#F5A725", // rouge
         "#D50303", // jaune
         "#129AF0", // bleu
-        "#468847"  // vert
+        "#468847", // vert
         "#468847"  // INSOUMIS AUSSI :)
     ];
 
-    var class_colors = ["not-a-source", "satirical", "complotist", "dubious", "trusted"]
+    var class_colors = ["not-a-source", "satirical", "complotist", "dubious", "trusted", "trusted"]
 
 
     // Helpers function
