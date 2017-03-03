@@ -138,17 +138,23 @@ function debunkSite(u, t, d){
         if(debunker == true){
             site_id = urls[u];
             site_actif = sites[site_id][2];
-            note = parseInt(sites[site_id][0]);
-            soumis = parseInt(sites[site_id][4]);
+            note_decodex = parseInt(sites[site_id][0]);
+            soumission = parseInt(sites[site_id][4]);
             notule = sites[site_id][1];
             slug = sites[site_id][3];
+            proprietaires = sites[site_id][5];
+            interets = sites[site_id][6];
+            influences = sites[site_id][7];
+            subventions = sites[site_id][8];
+            sources = sites[site_id][9];
+
             browser.browserAction.setIcon({
-                path: "img/icones/icon" + (soumis) + ".png", // note
+                path: "img/icones/icon" + (soumission) + ".png", // note
                 tabId: t
             });
             if(results.infobulles[soumis] == true && d == true){  // note
                 browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                    browser.tabs.sendMessage(tabs[0].id, {text: "soumis"+soumis}, function(response) { // note
+                    browser.tabs.sendMessage(tabs[0].id, {text: "soumis"+soumission}, function(response) { // note
                     });
                 });
             }
