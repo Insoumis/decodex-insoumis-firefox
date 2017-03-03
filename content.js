@@ -83,7 +83,7 @@
         "#D50303", // jaune
         "#129AF0", // bleu
         "#468847", // vert
-        "#468847"  // INSOUMIS AUSSI :)
+        "#468847"  // INSOUMIS AUSSI :D
     ];
 
     var class_colors = ["not-a-source", "satirical", "complotist", "dubious", "trusted", "trusted"]
@@ -297,6 +297,7 @@
             text.innerHTML = messages[soumis]; // note
             var icone = new Image();
             icone.src = icones[soumis]; // note
+            // TODO afficher les infos manquantes avec popup.js et popup.html
             css(icone, [reset, {
                 'vertical-align':'middle',
                 'display': 'inline-block'

@@ -40,6 +40,13 @@ var active_url = "";
 var debunker = false;
 var clean_url = "";
 
+var owners      = '';
+var interest    = '';
+var exemples    = '';
+var subventions = '';
+var sources     = '';
+
+
 function onInstall() {
     console && console.log("Le Décodex insoumis est installé");
     loadData();
@@ -137,17 +144,20 @@ function debunkSite(u, t, d){
         debunker = urls.hasOwnProperty(u);
         if(debunker == true){
             site_id = urls[u];
-            site_actif = sites[site_id][2];
-            note_decodex = parseInt(sites[site_id][0]);
-            soumission = parseInt(sites[site_id][4]);
-            notule = sites[site_id][1];
-            slug = sites[site_id][3];
-            proprietaires = sites[site_id][5];
-            interets = sites[site_id][6];
-            influences = sites[site_id][7];
-            subventions = sites[site_id][8];
-            sources = sites[site_id][9];
-
+            try {
+                site_actif = sites[site_id][2];                // nom du site
+                note_decodex = parseInt(sites[site_id][0]);    // note decodex
+                soumission = parseInt(sites[site_id][4]);      // note insoumis
+                notule = sites[site_id][1];                    // description originale
+                slug = sites[site_id][3];                      // nom normalisé
+                proprietaires = sites[site_id][5];             // propriétaires
+                interets = sites[site_id][6];                  // intérets
+                influences = sites[site_id][7];                // exemple d'influences / complicité idéologique
+                subventions = sites[site_id][8];               // Montant des subventions d'état
+                sources = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace
+            } catch(e) {
+                console && console.error(e);
+            }
             browser.browserAction.setIcon({
                 path: "img/icones/icon" + (soumission) + ".png", // note
                 tabId: t
