@@ -72,6 +72,9 @@
 */
 
 var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
+if (_debug) {
+    console && console.warn("DEBUG LEVEL", _debug);
+}
 var base_url = "http://decodex.insoumis.online/decodex_data.json";
 var always_refresh = true;
 var urls = "";
@@ -140,7 +143,10 @@ function loadJSON(path, success, error)
 function loadData(){
 
     if (1 <= _debug)
-        console && console.log('start loadData');
+        console && console.info('start loadData()');
+        else {
+            console && console.info('NO DEBUG');
+        }
     browser.storage.local.get('last_update', function(results){
         var new_update = new Date();
         loadJSON(base_url,
@@ -201,21 +207,37 @@ function debunkSite(u, t, d){
         urls = results.urls;
         sites = results.sites;
         debunker = urls.hasOwnProperty(u);
-        if(debunker == true){
+        if (debunker == true) {
             site_id = urls[u];
+            if (1 <= _debug) {
+                console && console.log('site FOUND ! ', site_id);
+            }
             try {
-                site_actif = sites[site_id][2];                // nom du site
-                note_decodex = parseInt(sites[site_id][0]);    // note decodex
-                soumission = parseInt(sites[site_id][4]);      // note insoumis
-                notule = sites[site_id][1];                    // description originale
-                slug = sites[site_id][3];                      // nom normalisé
-                proprietaires = sites[site_id][5];             // propriétaires
-                interets = sites[site_id][6];                  // intérets
-                conflits = sites[site_id][7];                  // exemple de conflits / complicité idéologique
-                subventions = sites[site_id][8];               // Montant des subventions d'état
-                sources = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
-                if (1 <= _debug)
-                    console && console.info("tout s'est bien passé", sites[site_id]);
+                site_actif     = sites[site_id][2];                // nom du site
+                note_decodex   = parseInt(sites[site_id][0]);    // note decodex
+                soumission     = parseInt(sites[site_id][4]);      // note insoumis
+                notule         = sites[site_id][1];                    // description originale
+                slug           = sites[site_id][3];                      // nom normalisé
+                proprietaires  = sites[site_id][5];             // propriétaires
+                interets       = sites[site_id][6];                  // intérets
+                conflits       = sites[site_id][7];                  // exemple de conflits / complicité idéologique
+                subventions    = sites[site_id][8];               // Montant des subventions d'état
+                sources        = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
+                if (2 <= _debug) {
+                    console && console.group("tout s'est bien passé");
+                    console && console.log('site_actif     =',site_actif     );
+                    console && console.log('note_decodex   =',note_decodex   );
+                    console && console.log('soumission     =',soumission     );
+                    console && console.log('notule         =',notule         );
+                    console && console.log('slug           =',slug           );
+                    console && console.log('proprietaires  =',proprietaires  );
+                    console && console.log('interets       =',interets       );
+                    console && console.log('conflits       =',conflits       );
+                    console && console.log('subventions    =',subventions    );
+                    console && console.log('sources        =',sources        );
+                    console && console.groupEnd();
+
+                }
             } catch(e) {
                 if (1 <= _debug) {
                     console && console.error("ERREUR DEBUNKER");
@@ -236,7 +258,7 @@ function debunkSite(u, t, d){
         }
         else {
             if (1 <= _debug) {
-                console && console.log("site non trouvé");
+                console && console.log("site non trouvé", u);
             }
             browser.browserAction.setIcon({
                 path: "icone.png",
