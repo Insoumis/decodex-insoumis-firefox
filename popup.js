@@ -92,6 +92,12 @@ function bulleStore(e){
     });
 }
 
+function refreshDatabase(e){
+    browser.storage.local.set({
+    'last_update': 0
+    });
+}
+
 function main() {
 	console && console.log('start main in popup.js');
 
@@ -231,5 +237,6 @@ document.addEventListener('DOMContentLoaded', function () {
     for(var i=0;i<max_notes;i++){
         document.querySelector('#check-alert'+i).addEventListener('click', bulleStore);
     }
+    document.querySelector('#do-refresh-database').addEventListener('click', refreshDatabase);
 });
 
