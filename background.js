@@ -223,6 +223,13 @@ function debunkSite(u, t, d){
                 conflits       = sites[site_id][7];                  // exemple de conflits / complicité idéologique
                 subventions    = sites[site_id][8];               // Montant des subventions d'état
                 sources        = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
+
+
+                // Markdown style
+                sources = sources.replace(/\[([^\]]*?)\]\(([^\)]*?)\)[, ]{0,2}/gm, '<a class="source-link" href="$2">$1</a>');
+                // URL toute seule (a corriger)
+                //sources = sources.replace(/(http:\/\/[^/]+\/[^/]+)\/[^"][^ ,]{1,2}/g, '<a href="$1">$1</a><br>');
+
                 if (2 <= _debug) {
                     console && console.group("tout s'est bien passé");
                     console && console.log('site_actif     =',site_actif     );

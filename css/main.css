@@ -212,3 +212,17 @@ footer {
 .insoumis {
     margin-left:8px;
 }
+#sources {
+    margin-bottom : 8px;
+}
+#sources .content {
+    display : block;
+    background-color : #eee;
+}
+
+#sources .content a {
+    background-color : #ddd;
+    display : block;
+    font-weight: normal;
+    margin : 2px;
+}

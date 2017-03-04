@@ -172,6 +172,7 @@ function main() {
         document.querySelector("#interests span.content").innerText = background.interets;
         document.querySelector("#conflicts span.content").innerText = background.conflits;
         document.querySelector("#subsidies span.content").innerText = background.subventions;
+        document.querySelector("#sources span.content").innerHTML = background.sources;
 
         document.querySelector("#decodex-insoumis-window").style.display = "block";
         document.querySelector("#verif-insoumis").classList.remove("active");
