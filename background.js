@@ -89,6 +89,7 @@ var proprietaires = '';
 var interets      = '';
 var conflits      = '';
 var subventions   = '';
+var publicite     = '';
 var sources       = '';
 
 
@@ -222,7 +223,8 @@ function debunkSite(u, t, d){
                 interets       = sites[site_id][6];                  // intérets
                 conflits       = sites[site_id][7];                  // exemple de conflits / complicité idéologique
                 subventions    = sites[site_id][8];               // Montant des subventions d'état
-                sources        = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
+                publicite      = sites[site_id][9];               // Pub ?
+                sources        = sites[site_id][10];                   // Nos sources (urls séparés par virgule et/ou espace)
 
 
                 if (1 <= _debug) {
