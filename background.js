@@ -226,20 +226,6 @@ function debunkSite(u, t, d){
                 publicite      = sites[site_id][9];              // Pub ?
                 sources        = sites[site_id][10];             // Nos sources (urls séparés par virgule et/ou espace)
 
-                if (u.match(/youtube.com/)) {
-                    if ("" == proprietaires)
-                        proprietaires  = "Youtube est une propriété de la Holding Alphabet (Google)";                             // propriétaires
-                    if ("" == interets)
-                        interets       = "Le groupe Alphabet(Google) a de nombreux intérêts internationnaux. Son business model est fortement basé sur la publicité et son quasi-monopole de la publicité. Google exerce de nombreuses pressions sur les états et l'Union Européenne.";                               // intérets
-                    if ("" == conflits)
-                        conflits       = "Youtube peut être un outil de partage de connaissances. Les vidéastes et utilisateurs de la plateforme youtube ne sont pas forcément soumis à Google, mais… ";  // exemple de conflits / complicité idéologique
-                    if ("" == subventions)
-                        subventions    = "";             // Montant des subventions d'état
-                    if ("" == sources)
-                        sources        = "";             // Nos sources (urls séparés par virgule et/ou espace)
-                }
-
-
                 if (1 <= _debug) {
                     console && console.info("sources avant markdown", sources);
                 }
@@ -296,6 +282,29 @@ function debunkSite(u, t, d){
                 tabId: t
             });
         }
+
+        if (u.match(/youtube.com/)) {
+
+            if (null == soumission)
+                soumission  = 0;                             // propriétaires
+
+            browser.browserAction.setIcon({
+                path: "img/icones/icon" + (soumission) + ".png", // note
+                tabId: t
+            });
+
+            if ("" == proprietaires)
+                proprietaires  = "Youtube est une propriété de la Holding Alphabet (Google)";                             // propriétaires
+            if ("" == interets)
+                interets       = "Le groupe Alphabet(Google) a de nombreux intérêts internationnaux. Son business model est fortement basé sur la publicité et son quasi-monopole de la publicité. Google exerce de nombreuses pressions sur les états et l'Union Européenne.";                               // intérets
+            if ("" == conflits)
+                conflits       = "Youtube peut être un outil de partage de connaissances. Les vidéastes et utilisateurs de la plateforme youtube ne sont pas forcément soumis à Google, mais… ";  // exemple de conflits / complicité idéologique
+            if ("" == subventions)
+                subventions    = "";             // Montant des subventions d'état
+            if ("" == sources)
+                sources        = "";             // Nos sources (urls séparés par virgule et/ou espace)
+        }
+
         var today = new Date();
         if(always_refresh || (today.getTime() - results.last_update)/1000/60/60 >= 1) {
 
