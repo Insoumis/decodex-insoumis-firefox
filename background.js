@@ -210,11 +210,11 @@ function youtubeChannel(u){
 
 
 function debunkSite(u, t, d){
-    if (1 <= _debug)
+    if (2 <= _debug)
         console && console.log('debunk site ', u);
-    // TODO: rajouter les champs manquants
+
     browser.storage.local.get(['urls', "sites", "already_visited", "infobulles", "last_update"], function(results){
-        if (1 <= _debug) {
+        if (3 <= _debug) {
             console && console.info("debunkSite : var results");
             console && console.log(results);
         }
@@ -223,7 +223,7 @@ function debunkSite(u, t, d){
         debunker = urls.hasOwnProperty(u);
         if (debunker == true) {
             site_id = urls[u];
-            if (1 <= _debug) {
+            if (2 <= _debug) {
                 console && console.log('site FOUND ! ', site_id);
             }
             try {
@@ -239,17 +239,17 @@ function debunkSite(u, t, d){
                 publicite      = sites[site_id][col_pub];                    // Pub ?
                 sources        = sites[site_id][col_sources];                // Nos sources (urls séparés par virgule et/ou espace)
 
-                if (1 <= _debug) {
+                if (3 <= _debug) {
                     console && console.info("sources avant markdown", sources);
                 }
                 // Markdown style
                 sources = sources.replace(/\[([^\]]*?)\]\(([^\)]*?)\)[, ]{0,2}/gm, '<a class="source-link" href="$2">$1</a>');
-                if (1 <= _debug) {
+                if (3 <= _debug) {
                     console && console.log("sources apres markdown", sources);
                 }
                 // URL toute seule (a corriger)
                 sources = sources.replace(/^(http[s]?:\/\/([^/]+)\/[^" ,]+)[^"]{1,2}$/g, '<a href="$1">$2</a><br>');
-                if (1 <= _debug) {
+                if (3 <= _debug) {
                     console && console.log("sources apres urls simples", sources);
                 }
 
@@ -287,8 +287,9 @@ function debunkSite(u, t, d){
             }
         }
         else {
-            if (1 <= _debug) {
-                console && console.log("site non trouvé", u);
+            if (2 <= _debug) {
+                console && console.info("site non trouvé", u);
+                console && console.log(u);
             }
             browser.browserAction.setIcon({
                 path: "icone.png",
@@ -341,6 +342,10 @@ function checkSite(do_display){
             tab = active_tab;
         }
         active_url = lastSlash(tab.url);
+        if (_debug > 1) {
+            console && console.warn("active url", active_url);
+        }
+
         if(active_url.indexOf("chrome-extension://") == 0) { return;}
         // YOUTUBE
         if(active_url.indexOf("youtube.com/") > -1){
@@ -366,14 +371,22 @@ function checkSite(do_display){
         else {
             matches = []
                 for (var key in urls) {
+                    if (_debug > 4) {
+                        console && console.warn("check key", key);
+                    }
                     if (!urls.hasOwnProperty(key)) continue;
                     var index = active_url.indexOf(key);
                     if(index != -1) {
-                        if((active_url.indexOf('http://www.'+ key) == 0 || active_url.indexOf('https://www.'+ key) == 0 || active_url.indexOf('http://'+ key) == 0 || active_url.indexOf('https://'+ key) == 0)
-                                && index != 0
-                                && (active_url[index-1] == "/" || active_url[index-1] == ".")
-                                && key != "facebook.com"
-                                && key != "twitter.com") {
+                        if((
+                            active_url.indexOf('http://www.'+ key) == 0
+                            || active_url.indexOf('https://www.'+ key) == 0
+                            || active_url.indexOf('http://'+ key) == 0
+                            || active_url.indexOf('https://'+ key) == 0
+                           )
+                           && index != 0
+                           && (active_url[index-1] == "/" || active_url[index-1] == ".")
+                           && key != "facebook.com"
+                           && key != "twitter.com") {
                             matches.push(key);
                         }
                     }
