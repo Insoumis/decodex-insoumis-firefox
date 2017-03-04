@@ -71,7 +71,7 @@
                                ,:`
 */
 
-var _debug = 2; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
+var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
 if (_debug) {
     console && console.warn("DEBUG LEVEL", _debug);
 }
@@ -225,10 +225,19 @@ function debunkSite(u, t, d){
                 sources        = sites[site_id][9];                   // Nos sources (urls séparés par virgule et/ou espace)
 
 
+                if (1 <= _debug) {
+                    console && console.info("sources avant markdown", sources);
+                }
                 // Markdown style
                 sources = sources.replace(/\[([^\]]*?)\]\(([^\)]*?)\)[, ]{0,2}/gm, '<a class="source-link" href="$2">$1</a>');
+                if (1 <= _debug) {
+                    console && console.log("sources apres markdown", sources);
+                }
                 // URL toute seule (a corriger)
-                //sources = sources.replace(/(http:\/\/[^/]+\/[^/]+)\/[^"][^ ,]{1,2}/g, '<a href="$1">$1</a><br>');
+                sources = sources.replace(/(http:\/\/[^/]+\/[^/]+)\/[^"][^ ,]{1,2}/g, '<a href="$1">$2</a><br>');
+                if (1 <= _debug) {
+                    console && console.log("sources apres urls simples", sources);
+                }
 
                 if (2 <= _debug) {
                     console && console.group("tout s'est bien passé");
