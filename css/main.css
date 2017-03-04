@@ -141,7 +141,7 @@ a.more:after, .button.more:after{
 	overflow: hidden;
 }
 
-.decodex .content{
+.decodex div.content{
 	padding: 20px;
 }
 

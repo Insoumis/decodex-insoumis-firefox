@@ -141,6 +141,14 @@ function main() {
         "#468847"  // INSOUMIS AUSSI :D
     ];
 
+    var decodex_colors = [
+        "#A2A9AE", "#129AF0", "#D50303", "#F5A725", "#468847"
+    ];
+
+    var decodex_descs = [
+        "inclassable", "parodique", "pas fiable du tout", "peu fiable", "fiable"
+    ];
+
     var background = browser.extension.getBackgroundPage();
     if(background.debunker == true) {
         // TODO afficher les infos manquantes avec popup.js et popup.html
@@ -148,6 +156,17 @@ function main() {
         document.querySelector("#notule").innerText = background.notule;
         document.querySelector("#our-opinion").style["color"] = colors[background.soumission];
         document.querySelector("#our-opinion").innerText = messages[background.soumission];
+
+        if(background.note_decodex in decodex_colors) {
+            document.querySelector("#les-decodeurs #comment").innerText = "Les Décodeurs du Monde jugent eux ce site comme ";
+            document.querySelector("#les-decodeurs #description").style["color"] = decodex_colors[background.note_decodex];
+            document.querySelector("#les-decodeurs #description").innerText = decodex_descs[background.note_decodex];
+        }
+        else {
+            document.querySelector("#les-decodeurs").innerText = "Les Décodeurs du Monde ne connaissent pas ce site";
+            document.querySelector("#les-decodeurs #description").style["color"] = "black";
+            document.querySelector("#les-decodeurs #description").innerText = "";
+        }
 
         document.querySelector("#owner span.content").innerText = background.proprietaires;
         document.querySelector("#interests span.content").innerText = background.interets;
