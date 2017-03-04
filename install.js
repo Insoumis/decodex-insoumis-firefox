@@ -103,20 +103,20 @@ function main(){
 
     browser.storage.local.get('infobulles', function(results){
 
-        for(var i=0;i<5;i++){
-            if(results.infobulles[i] == true){
-                document.getElementById("check-alert" + i).checked = true;
-            }
-            else {
-                document.getElementById("check-alert" + i).checked = false;
-            }
+        for(var i=0;i<6;i++){
+                if(results.infobulles[i] == true){
+                    document.getElementById("check-alert" + i).checked = true;
+                }
+                else {
+                    document.getElementById("check-alert" + i).checked = false;
+                }
         }
 
     });
 }
 document.addEventListener('DOMContentLoaded', function () {
 
-    for(var i=0;i<5;i++){
+    for(var i=0;i<6;i++){
         var selector = document.querySelector('#check-alert'+i).addEventListener('click', bulleStore);
     }
     main();

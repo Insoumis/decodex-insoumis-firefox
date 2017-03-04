@@ -96,6 +96,7 @@ function refreshDatabase(e){
     browser.storage.local.set({
     'last_update': 0
     });
+    this.blur();
 }
 
 function main() {

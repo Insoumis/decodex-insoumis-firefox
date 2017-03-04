@@ -179,6 +179,12 @@ a.more:after, .button.more:after{
     left:3px;
     margin-bottom:6px;
 }
+.refresh-db {
+border: 2px outset gray;background-color:#eee;
+}
+.refresh-db:focus {
+border: 2px inset gray;background-color:#d8d8d8;
+}
 
 label {
     cursor: pointer;
