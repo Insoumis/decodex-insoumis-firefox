@@ -75,6 +75,19 @@ var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
 if (_debug) {
     console && console.warn("DEBUG LEVEL", _debug);
 }
+
+var col_note_decodex = 0
+var col_desc         = 1
+var col_nom          = 2
+var col_slug         = 3
+var col_insoumis     = 4
+var col_proprietaire = 5
+var col_interet      = 6
+var col_exemple      = 7
+var col_subventions  = 8
+var col_pub          = 9
+var col_sources      = 10
+
 var base_url = "http://decodex.insoumis.online/decodex_data.json";
 var always_refresh = true;
 var urls = "";
@@ -214,17 +227,17 @@ function debunkSite(u, t, d){
                 console && console.log('site FOUND ! ', site_id);
             }
             try {
-                site_actif     = sites[site_id][2];              // nom du site
-                note_decodex   = parseInt(sites[site_id][0]);    // note decodex
-                soumission     = parseInt(sites[site_id][4]);    // note insoumis
-                notule         = sites[site_id][1];              // description originale
-                slug           = sites[site_id][3];              // nom normalisé
-                proprietaires  = sites[site_id][5];              // propriétaires
-                interets       = sites[site_id][6];              // intérets
-                conflits       = sites[site_id][7];              // exemple de conflits / complicité idéologique
-                subventions    = sites[site_id][8];              // Montant des subventions d'état
-                publicite      = sites[site_id][9];              // Pub ?
-                sources        = sites[site_id][10];             // Nos sources (urls séparés par virgule et/ou espace)
+                site_actif     = sites[site_id][col_nom];                    // nom du site
+                note_decodex   = parseInt(sites[site_id][col_note_decodex]); // note decodex
+                soumission     = parseInt(sites[site_id][col_insoumis]);     // note insoumis
+                notule         = sites[site_id][col_desc];                   // description originale
+                slug           = sites[site_id][col_slug];                   // nom normalisé
+                proprietaires  = sites[site_id][col_proprietaire];           // propriétaires
+                interets       = sites[site_id][col_interet];                // intérets
+                conflits       = sites[site_id][col_exemple];                // exemple de conflits / complicité idéologique
+                subventions    = sites[site_id][col_subventions];            // Montant des subventions d'état
+                publicite      = sites[site_id][col_pub];                    // Pub ?
+                sources        = sites[site_id][col_sources];                // Nos sources (urls séparés par virgule et/ou espace)
 
                 if (1 <= _debug) {
                     console && console.info("sources avant markdown", sources);
