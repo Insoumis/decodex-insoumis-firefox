@@ -214,17 +214,30 @@ function debunkSite(u, t, d){
                 console && console.log('site FOUND ! ', site_id);
             }
             try {
-                site_actif     = sites[site_id][2];                // nom du site
+                site_actif     = sites[site_id][2];              // nom du site
                 note_decodex   = parseInt(sites[site_id][0]);    // note decodex
-                soumission     = parseInt(sites[site_id][4]);      // note insoumis
-                notule         = sites[site_id][1];                    // description originale
-                slug           = sites[site_id][3];                      // nom normalisé
-                proprietaires  = sites[site_id][5];             // propriétaires
-                interets       = sites[site_id][6];                  // intérets
-                conflits       = sites[site_id][7];                  // exemple de conflits / complicité idéologique
-                subventions    = sites[site_id][8];               // Montant des subventions d'état
-                publicite      = sites[site_id][9];               // Pub ?
-                sources        = sites[site_id][10];                   // Nos sources (urls séparés par virgule et/ou espace)
+                soumission     = parseInt(sites[site_id][4]);    // note insoumis
+                notule         = sites[site_id][1];              // description originale
+                slug           = sites[site_id][3];              // nom normalisé
+                proprietaires  = sites[site_id][5];              // propriétaires
+                interets       = sites[site_id][6];              // intérets
+                conflits       = sites[site_id][7];              // exemple de conflits / complicité idéologique
+                subventions    = sites[site_id][8];              // Montant des subventions d'état
+                publicite      = sites[site_id][9];              // Pub ?
+                sources        = sites[site_id][10];             // Nos sources (urls séparés par virgule et/ou espace)
+
+                if (u.match(/youtube.com/)) {
+                    if ("" == proprietaires)
+                        proprietaires  = "Youtube est une propriété de la Holding Alphabet (Google)";                             // propriétaires
+                    if ("" == interets)
+                        interets       = "Le groupe Alphabet(Google) a de nombreux intérêts internationnaux. Son business model est fortement basé sur la publicité et son quasi-monopole de la publicité. Google exerce de nombreuses pressions sur les états et l'Union Européenne.";                               // intérets
+                    if ("" == conflits)
+                        conflits       = "Youtube peut être un outil de partage de connaissances. Les vidéastes et utilisateurs de la plateforme youtube ne sont pas forcément soumis à Google, mais… ";  // exemple de conflits / complicité idéologique
+                    if ("" == subventions)
+                        subventions    = "";             // Montant des subventions d'état
+                    if ("" == sources)
+                        sources        = "";             // Nos sources (urls séparés par virgule et/ou espace)
+                }
 
 
                 if (1 <= _debug) {
