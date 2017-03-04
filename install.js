@@ -104,12 +104,18 @@ function main(){
     browser.storage.local.get('infobulles', function(results){
 
         for(var i=0;i<6;i++){
+            try {
                 if(results.infobulles[i] == true){
                     document.getElementById("check-alert" + i).checked = true;
                 }
                 else {
                     document.getElementById("check-alert" + i).checked = false;
                 }
+            } catch(e) {
+                console.log("error in install.js for infobulles, check-alert"+i);
+                console && console.info("error in install.js for infobulles, check-alert"+i);
+                console && console.error(e);
+            }
         }
 
     });
@@ -117,7 +123,14 @@ function main(){
 document.addEventListener('DOMContentLoaded', function () {
 
     for(var i=0;i<6;i++){
-        var selector = document.querySelector('#check-alert'+i).addEventListener('click', bulleStore);
+        try {
+            var selector = document.getElementById('check-alert' + i);
+            selector.addEventListener('click', bulleStore);
+        } catch(e) {
+            console && console.info("error in install.js for check-alert"+i);
+            console && console.error(e);
+        }
+
     }
     main();
 });
