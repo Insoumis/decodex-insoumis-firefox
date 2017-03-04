@@ -71,7 +71,7 @@
                                ,:`
  */
 
-var max_notes = 6; (de 0 à 5 = 6 notes)
+var max_notes = 6;  // (de 0 à 5 = 6 notes)
 
 function bulleStore(e){
     var infobulles;
