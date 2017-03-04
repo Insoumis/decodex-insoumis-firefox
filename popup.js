@@ -143,8 +143,8 @@ function main() {
 
     var colors = [
         "#A2A9AE", // gris
-        "#F5A725", // rouge
-        "#D50303", // jaune
+        "#D50303", // rouge
+        "#F5A725", // jaune
         "#129AF0", // bleu
         "#468847", // vert
         "#468847"  // INSOUMIS AUSSI :D
