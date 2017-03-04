@@ -113,7 +113,7 @@ function onInstall() {
     var last_update = new Date();
     browser.storage.local.set(
             {
-                'infobulles': [false, true, true, true, false],
+                'infobulles': [false, true, true, true, true, true],
                 "installed" : true,
                 'last_update': last_update.getTime(),
             }
@@ -158,8 +158,7 @@ function loadData(){
 
     if (1 <= _debug) {
         console && console.info('start loadData()');
-    } else {
-        console && console.info('NO DEBUG');
+        //console && console.info('NO DEBUG');
     }
     browser.storage.local.get('last_update', function(results){
         var new_update = new Date();
