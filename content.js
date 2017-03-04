@@ -75,7 +75,7 @@
 
     var infobulle;
     var removeTimeout;
-    var removeAfter = 10000; // En milliseconde
+    var removeAfter = 20000; // En milliseconde (avant : 10 secondes)
 
     var messages = [
         // gris
@@ -264,10 +264,11 @@
             };
 
             css(infobulle, [reset, {
-                'top': '20px',
+                'top': '60px', // changement insoumis
                 'right': '20px',
                 'position': 'fixed',
-                'width': '215px',
+                'width': '255px',  // changement insoumis
+                //'width': '215px',
                 'border-radius': '2px',
                 'background-color': '#fafbfc',
                 'box-shadow': '0 0 10px 0 #5d666d',
@@ -331,6 +332,7 @@
 
             // Ajout du contenu
             appendText(title, msg_bandeau[soumission]); // note
+            // le picto= un carré avec border-radius + un caractere
             appendText(picto, '!');
             appendText(close, 'Fermer');
             text.innerHTML = messages[soumission]; // note

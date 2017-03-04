@@ -71,6 +71,8 @@
                                ,:`
  */
 
+var max_notes = 6; (de 0 à 5 = 6 notes)
+
 function bulleStore(e){
     var infobulles;
     var id = parseInt(this.id.replace("check-alert", ""));
@@ -203,7 +205,7 @@ function main() {
         }
     });
     browser.storage.local.get('infobulles', function(results){
-        for(var i=0;i<5;i++){
+        for(var i=0;i<max_notes;i++){
                 if(results.infobulles[i] == true){
                     document.getElementById("check-alert" + i).checked = true;
                 }
@@ -219,14 +221,14 @@ function main() {
         e.preventDefault();
         window.close();
     });
-    for(var i=0;i<5;i++){
+    for(var i=0;i<max_notes;i++){
         document.querySelector("#alert"+i).style.color = colors[i];
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     main();
-    for(var i=0;i<5;i++){
+    for(var i=0;i<max_notes;i++){
         document.querySelector('#check-alert'+i).addEventListener('click', bulleStore);
     }
 });
