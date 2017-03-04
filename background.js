@@ -89,7 +89,7 @@ var col_pub          = 9
 var col_sources      = 10
 
 var base_url = "http://decodex.insoumis.online/decodex_data.json";
-var always_refresh = true;
+var always_refresh = false;
 var urls = "";
 var note = null;
 var soumission = null;
