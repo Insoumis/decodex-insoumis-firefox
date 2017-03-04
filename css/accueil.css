@@ -123,7 +123,9 @@ ul img{
 }
 
 .colored{
-	color: #032553;
+	/*color: #032553;*/
+	color: #D50303;
+    font-size : 26px;
 }
 
 a{
@@ -188,7 +190,7 @@ label{
 .plutot-insoumis{
 	color: #129AF0;
 }
-.insoumis{
+.media-insoumis{
 	color: #468847;
 }
 .france-insoumise{
