@@ -248,7 +248,7 @@ function debunkSite(u, t, d){
                     console && console.log("sources apres markdown", sources);
                 }
                 // URL toute seule (a corriger)
-                sources = sources.replace(/(http:\/\/[^/]+\/[^/]+)\/[^"][^ ,]{1,2}/g, '<a href="$1">$2</a><br>');
+                sources = sources.replace(/^(http[s]?:\/\/([^/]+)\/[^" ,]+)[^"]{1,2}$/g, '<a href="$1">$2</a><br>');
                 if (1 <= _debug) {
                     console && console.log("sources apres urls simples", sources);
                 }

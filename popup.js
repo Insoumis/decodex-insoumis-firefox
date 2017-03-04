@@ -160,6 +160,7 @@ function main() {
         if(background.note_decodex in decodex_colors) {
             document.querySelector("#les-decodeurs #comment").innerText = "Les Décodeurs du Monde jugent eux ce site comme ";
             document.querySelector("#les-decodeurs #description").style["color"] = decodex_colors[background.note_decodex];
+            document.querySelector("#les-decodeurs #description").style["font-weight"] = "bold";
             document.querySelector("#les-decodeurs #description").innerText = decodex_descs[background.note_decodex];
         }
         else {
