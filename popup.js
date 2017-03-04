@@ -86,7 +86,7 @@ function bulleStore(e){
             infobulles[id] = false;
         }
         browser.storage.local.set({
-            'infobulles': infobulles,
+            'infobulles': infobulles
             }
         );
     });
@@ -94,13 +94,13 @@ function bulleStore(e){
 
 function refreshDatabase(e){
     browser.storage.local.set({
-    'last_update': 0
+        'last_update': ((new Date().getTime()) - 24*60*60*1000)
     });
     this.blur();
 }
 
 function main() {
-	console && console.log('start main in popup.js');
+	//console && console.log('start main in popup.js');
 
     var messages = [
         // gris
