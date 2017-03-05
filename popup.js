@@ -104,11 +104,11 @@ function main() {
 
     var messages = [
         // gris
-        "Attention, nous n'avons pas encore évalué ce média, ou nous n'avons pas pu trouver d'information suffisamment fiable pour nous prononcer. Si vous avez des informations concernant le mode de financement ou l'orientation politique de ce média, n'hésitez pas à nous contacter.",
+        "Nous n'avons pas encore évalué ce média selon nos critères, ou nous n'avons pas pu trouver d'information suffisamment fiable pour l'indiquer.",
         // rouge
-        "Attention, ce média n'est pas du tout indépendant. Cette catégorie regroupe les médias recevant de grandes subventions publiques (nous notons ainsi tous les médias ayant reçu plus de 1 000 000 €/an de l'état) ou appartenant a de grands groupes industriels/puissance financières qui peuvent influencer le traitement de l'informationm leur ligne éditoriale ou dans certains cas de l'auto-censure. Nous vous conseillons de chercher une source alternative à l'information que vous lisez, voir opposée, pour avoir au moins une seconde source moins partiale.",
+        "Selon les critères retenus, ce média n'est pas indépendant. Cette catégorie peut contenir des médias recevant de grandes subventions publiques, ou appartenant a de grands groupes industriels ou puissance financières qui peuvent influencer le traitement de l'information ou la ligne éditoriale. Quoi qu'il en soit, nous vous conseillons de chercher une ou plusieurs source alternative à l'information que vous lisez, voir opposée, pour avoir au moins une seconde source moins partiale.",
         // jaune
-        "Attention, ce média n'est pas vraiment indépendant. Cette catégorie regroupe les médias recevant des subventions publique entre 200 000 € et 1 000 000 € / an de la part de l'état, ou qui défendent des intérêts financiers de grands groupes à travers leur ligne éditoriale, ou encore dépendent en grande partie de la publicité (qui oriente souvent la ligne éditoriale ou peut conduire à de l'auto-censure de la part des journalistes). Nous vous conseillons de chercher une source alternative à l'information que vous lisez, voir opposée, pour avoir au moins une seconde source moins partiale.",
+        "Selon les critères retenus, ce média n'est pas vraiment indépendant. Cette catégorie peut contenir des médias recevant des subventions publique, ou qui défendent des intérêts financiers de grands groupes à travers leur ligne éditoriale, ou encore dépendent en grande partie de la publicité (qui oriente souvent la ligne éditoriale ou peut conduire à de l'auto-censure de la part des journalistes). Nous vous conseillons de chercher une source alternative à l'information que vous lisez, voir opposée, pour avoir au moins une seconde source moins partiale.",
         // bleu
         "Ce média reçoit peu de subvention de la part de l'état et ne dépend pas ou peu de recettes publicitaires. Aucun média n'est indépendant ou neutre à 100%, mais celui là est peut être moins influencé par les sphères financières ou politique que les autres. Vous pouvez si vous le souhaitez comparer la même information avec un média un peu plus soumis à l'oligarchie ou au capital, ça peut vous surprendre !",
         // vert
@@ -187,7 +187,7 @@ function main() {
         document.querySelector("#decodex-insoumis-window").style.display = "block";
         document.querySelector("#verif-insoumis").classList.remove("active");
         document.querySelector("#decodex-insoumis-window").classList.add('active');
-        document.querySelector("#more-info-insoumis").href = "http://decodex.insoumis.online/about.html";
+        document.querySelector("#more-info-insoumis").href = "https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias";
     }
     else {
         document.querySelector("#verif-insoumis").style.display = "block";
