@@ -178,10 +178,16 @@ function main() {
             document.querySelector("#les-decodeurs #description").innerText = "";
         }
 
-        document.querySelector("#owner span.content").innerText = background.proprietaires;
-        document.querySelector("#interests span.content").innerText = background.interets;
-        document.querySelector("#conflicts span.content").innerText = background.conflits;
-        document.querySelector("#subsidies span.content").innerText = background.subventions;
+        document.querySelector("#proprietaires span.content").innerText = background.proprietaires.join(",");
+        document.querySelector("#fortunes span.content").innerText = background.fortunes.join(",");
+        document.querySelector("#brands span.content").innerText = background.marques.join(",");
+        document.querySelector("#influences span.content").innerText = background.influences.join(",");
+
+
+        //document.querySelector("#interests span.content").innerText = background.interets;
+        //document.querySelector("#conflicts span.content").innerText = background.conflits;
+        //document.querySelector("#subsidies span.content").innerText = background.subventions;
+
         document.querySelector("#sources span.content").innerHTML = background.sources;
 
         document.querySelector("#decodex-insoumis-window").style.display = "block";

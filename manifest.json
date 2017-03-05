@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Decodex Insoumis",
-  "version": "1.1.4.15",
+  "version": "1.1.4.16",
   "description": "Avec le Décodex Insoumis, apprenez en un clin d'oeil qui se trouve derri&egrave;re le média que vous &ecirc;tre en train de lire !",
   "applications": {
       "gecko": {
@@ -34,6 +34,6 @@
     "activeTab",
     "webRequest",
 
-    "http://decodex.insoumis.online/decodex_data.json"
+    "http://decodex.insoumis.online/database.json"
   ]
 }
