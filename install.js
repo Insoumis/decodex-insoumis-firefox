@@ -85,7 +85,7 @@ function bulleStore(e){
             infobulles[id] = false;
         }
         browser.storage.local.set({
-            'infobulles': infobulles,
+            'infobulles': infobulles
             }
         );
     });
