@@ -79,15 +79,15 @@
 
     var messages = [
         // gris
-        "Attention, nous n'avons pas encore évalué ce média, ou nous n'avons pas pu trouver d'information suffisamment fiable pour nous prononcer. Si vous avez des informations concernant le mode de financement ou l'orientation politique de ce média, n'hésitez pas à nous contacter.",
+        "Nous n'avons pas encore évalué ce média selon nos critères, ou nous n'avons pas pu trouver d'information suffisamment fiable pour l'indiquer.",
         // rouge
-        "Attention, ce média n'est pas du tout indépendant. Cette catégorie regroupe les médias recevant de grandes subventions publiques (nous notons ainsi tous les médias ayant reçu plus de 1 000 000 €/an de l'état) ou appartenant a de grands groupes industriels/puissance financières qui peuvent influencer le traitement de l'informationm leur ligne éditoriale ou dans certains cas de l'auto-censure. Nous vous conseillons de chercher une source alternative à l'information que vous lisez, voir opposée, pour avoir au moins une seconde source moins partiale.",
+        "Selon les critères retenus, ce média n'est pas indépendant. Cette catégorie regroupe les médias appartenant a de grands groupes industriels ou puissance financières qui peuvent influencer le traitement de l'information ou la ligne éditoriale. Quoi qu'il en soit, nous vous conseillons de chercher une ou plusieurs source alternative à l'information que vous lisez, voir opposée, en particulier si cette presse confirme vos idées.en particulier si cette presse confirme vos idées.",
         // jaune
-        "Attention, ce média n'est pas vraiment indépendant. Cette catégorie regroupe les médias recevant des subventions publique entre 200 000 € et 1 000 000 € / an de la part de l'état, ou qui défendent des intérêts financiers de grands groupes à travers leur ligne éditoriale, ou encore dépendent en grande partie de la publicité (qui oriente souvent la ligne éditoriale ou peut conduire à de l'auto-censure de la part des journalistes). Nous vous conseillons de chercher une source alternative à l'information que vous lisez, voir opposée, pour avoir au moins une seconde source moins partiale.",
+        "Selon les critères retenus, ce média n'est pas vraiment indépendant. Cette catégorie regroupe les médias gérés par l'état français ou un état étranger. Ce type de média est en général moins soumis aux sphères financières, mais cela ne veut pas dire qu'il ne faut pas chercher une ou plusieurs source alternative à l'information que vous lisez, en particulier si cette presse confirme la version officielle de l'état concerné.",
         // bleu
-        "Ce média reçoit peu de subvention de la part de l'état et ne dépend pas ou peu de recettes publicitaires. Aucun média n'est indépendant ou neutre à 100%, mais celui là est peut être moins influencé par les sphères financières ou politique que les autres. Vous pouvez si vous le souhaitez comparer la même information avec un média un peu plus soumis à l'oligarchie ou au capital, ça peut vous surprendre !",
+        "????",
         // vert
-        "Bravo ! Ce média appartient en totalité à ses rédacteurs et ne fait aucune recette publicitaire ! De plus, il ne bénéficie pas ou très peu de subventions publicitaires (inférieures à 20 000 € / an). L'indépendance éditoriale est nécessaire pour une information de qualité. Merci à eux, et merci à vous de les lire ! Vous pouvez si vous le souhaitez comparer la même information avec un média un peu plus soumis à l'oligarchie ou au capital, ça peut vous surprendre !",
+        "Selon les critères retenus, ce média est insoumis, indépendant ! Il appartient en majorité à ses rédacteurs (et/ou abonnés) et ne fait pas ou très peu de recettes publicitaires ! Ces médias bénéficient en général d'assez peu de subventions publicitaires. L'indépendance éditoriale est nécessaire pour une information de qualité. Merci à eux, et merci à vous de les lire ! N'hésitez pas à comparer le traitement de l'information qu'en fait un autre média, plus soumis à l'oligarchie ou au capital… vous pourriez être surpris !",
         // insoumis !
         "Hé hé, on va pas vous mentir hein : Vous êtes sur un site clairement partisan des Insoumis ! Donc de notre point de vue, c'est un chouette site, vous pouvez lire tout ce que vous y trouvez, et comparer les informations avec des sites un peu plus soumis à l'oligarchie pour voir la différence de traitement !"
     ];
@@ -338,14 +338,14 @@
             text.innerHTML = messages[soumission]; // note
             var icone = new Image();
             icone.src = icones[soumission]; // note
-            // TODO afficher les infos manquantes avec popup.js et popup.html
             css(icone, [reset, {
                 'vertical-align':'middle',
-                'display': 'inline-block'
+                'display': "inline-block"
             }], forceImportant);
             more.innerHTML = "<span style='vertical-align:middle;'>+ d'infos en cliquant sur &nbsp;</span>";
             more.appendChild(icone);
             // Bind des event au clique
+
             close.addEventListener('click', closeInfoBulle);
             infobulle.addEventListener('mouseenter', clearRemoveTimeout);
             infobulle.addEventListener('mouseleave', removeAterTime);
