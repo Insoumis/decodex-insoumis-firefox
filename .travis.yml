@@ -12,7 +12,7 @@ addons:
 install:
     - npm install -g web-ext
 
-script: web-ext build
+script: web-ext lint && web-ext build
 
 before_deploy: web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET} &&  mv ./web-ext-artifacts/*.xpi extension.xpi
 deploy:
