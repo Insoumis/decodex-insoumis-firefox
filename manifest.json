@@ -12,7 +12,7 @@
     "scripts": ["background.js", "content.js", "install.js"],
     "persistent": false
   },
-  "icons": { 
+  "icons": {
     "16": "icone.png"
   },
   "browser_action" :
