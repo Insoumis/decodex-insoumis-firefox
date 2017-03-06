@@ -188,7 +188,17 @@ function main() {
         //document.querySelector("#conflicts span.content").innerText = background.conflits;
         //document.querySelector("#subsidies span.content").innerText = background.subventions;
 
-        document.querySelector("#sources span.content").innerHTML = background.sources;
+        document.querySelector("#sources span.content").innerText = "";
+        for(i in background.sources) {
+            var obj = background.sources[i];
+            var a = document.createElement("a");
+            a.href = obj.url;
+            a.innerText = obj.title;
+            document.querySelector("#sources span.content").appendChild(a);
+        }
+        // background.sources.forEach(function(obj, i){
+        //});
+
 
         document.querySelector("#decodex-insoumis-window").style.display = "block";
         document.querySelector("#verif-insoumis").classList.remove("active");

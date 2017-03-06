@@ -120,7 +120,7 @@ var interets      = '';
 var conflits      = '';
 var subventions   = '';
 var publicite     = '';
-var sources       = '';
+var sources       = [];
 
 
 function onInstall() {
@@ -281,44 +281,62 @@ function debunkSite(u, t, d){
                     subventions    = sites[site_id][col_subventions];            // Montant des subventions d'état
                     publicite      = sites[site_id][col_pub];                    // Pub ?
 
-                    sources        = sites[site_id][col_sources];                // Nos sources (urls séparés par virgule et/ou espace)
+                    var raw_sources = sites[site_id][col_sources];                // Nos sources (urls séparés par virgule et/ou espace)
 
                     if (3 <= _debug) {
                         console && console.info("sources avant markdown", sources);
                     }
                     // Markdown style
-                    sources = sources.replace(/\[([^\]]*?)\]\(([^\)]*?)\)[, ]{0,2}/gm, '<a class="source-link" href="$2">$1</a>');
+                    var regex = new RegExp(/\[([^\]]*?)\]\(([^\)]*?)\)[, ]{0,2}/gm);
+                    match = regex.exec(raw_sources);
+                    while (match != null) {
+                        title = match[1];
+                        url   = match[2];
+                        sources.push({"url":url, "title":title});
+                        match = regex.exec(raw_sources);
+                    }
+
                     if (3 <= _debug) {
                         console && console.log("sources apres markdown", sources);
                     }
-                    // URL toute seule (a corriger)
-                    sources = sources.replace(/^(http[s]?:\/\/([^/]+)\/[^" ,]+)[^"]{1,2}$/g, '<a href="$1">$2</a><br>');
-                            if (3 <= _debug) {
-                                console && console.log("sources apres urls simples", sources);
-                            }
 
-                            if (2 <= _debug) {
-                                console && console.group("tout s'est bien passé");
-                                console && console.log('site_actif     =',site_actif     );
-                                console && console.log('note_decodex   =',note_decodex   );
-                                console && console.log('soumission     =',soumission     );
-                                console && console.log('notule         =',notule         );
-                                console && console.log('slug           =',slug           );
-                                console && console.log('proprietaires  =',proprietaires  );
-                                console && console.log('interets       =',interets       );
-                                console && console.log('conflits       =',conflits       );
-                                console && console.log('subventions    =',subventions    );
-                                console && console.log('sources        =',sources        );
-                                console && console.groupEnd();
+                    // URL toute seule
+                    var regex = new RegExp(/^(http[s]?:\/\/([^/]+)\/[^" ,]+)[^"]{1,2}$/g);
+                    match = regex.exec(raw_sources);
+                    while (match != null) {
+                        url   = match[1];
+                        title = match[2];
+                        sources.push({"url":url, "title":title});
+                        match = regex.exec(raw_sources);
+                    }
 
-                            }
-                            } catch(e) {
-                                if (1 <= _debug) {
-                                    console && console.error("ERREUR DEBUNKER");
-                                    console && console.error(e);
-                                    console && console.log(sites[site_id]);
-                                }
-                            }
+                    if (3 <= _debug) {
+                        console && console.log("sources apres urls simples", sources);
+                    }
+
+                    if (2 <= _debug) {
+                        console && console.group("tout s'est bien passé");
+                        console && console.log('site_actif     =',site_actif     );
+                        console && console.log('note_decodex   =',note_decodex   );
+                        console && console.log('soumission     =',soumission     );
+                        console && console.log('notule         =',notule         );
+                        console && console.log('slug           =',slug           );
+                        console && console.log('proprietaires  =',proprietaires  );
+                        console && console.log('interets       =',interets       );
+                        console && console.log('conflits       =',conflits       );
+                        console && console.log('subventions    =',subventions    );
+                        console && console.log('sources        =',sources        );
+                        console && console.groupEnd();
+
+                    }
+                } catch(e) {
+                    if (1 <= _debug) {
+                        console && console.error("ERREUR DEBUNKER");
+                        console && console.error(e);
+                        console && console.log(sites[site_id]);
+                    }
+                }
+
                 browser.browserAction.setIcon({
                     path: "img/icones/icon" + (soumission) + ".png", // note
                     tabId: t

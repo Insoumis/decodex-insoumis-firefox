@@ -335,7 +335,7 @@
             // le picto= un carré avec border-radius + un caractere
             appendText(picto, '!');
             appendText(close, 'Fermer');
-            text.innerHTML = messages[soumission]; // note
+            text.innerText = messages[soumission]; // no html
             var icone = new Image();
             icone.src = icones[soumission]; // note
             css(icone, [reset, {
