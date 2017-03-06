@@ -1,7 +1,7 @@
 # Extension
 
 (Work In Progress)
-[![Build Status](https://travis-ci.org/Insoumis/decodex-firefox.svg?branch=develop)](https://travis-ci.org/Insoumis/decodex-firefox)
+[![Build Status](https://travis-ci.org/Insoumis/decodex-insoumis-firefox.svg?branch=master)](https://travis-ci.org/Insoumis/decodex-insoumis-firefox)
 
 Cette extension est idéale pour compléter l'extension très pratique «décodex» des décodeurs du monde.
 
