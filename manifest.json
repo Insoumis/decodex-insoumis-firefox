@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Decodex Insoumis",
-  "version": "1.1.4.18",
+  "version": "1.1.4.19",
   "description": "Avec le Décodex Insoumis, apprenez en un clin d'oeil qui se trouve derri&egrave;re le média que vous &ecirc;tre en train de lire !",
   "applications": {
       "gecko": {
