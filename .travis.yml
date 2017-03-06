@@ -4,6 +4,10 @@ language: node_js
 node_js:
     - "4.2.6"
 
+branches:
+    only:
+        - master
+
 cache: apt
 
 addons:
@@ -12,9 +16,10 @@ addons:
 install:
     - npm install -g web-ext
 
-script: web-ext lint && web-ext build && echo "build succeed"
+script: web-ext lint && web-ext build
 
-before_deploy: web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET} &&  mv ./web-ext-artifacts/*.xpi extension.xpi
+before_deploy: git describe --exact-match --tags HEAD && web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET} &&  mv ./web-ext-artifacts/*.xpi extension.xpi
+
 deploy:
     provider: releases
     api_key: "${GH_TOKEN}"
@@ -22,3 +27,4 @@ deploy:
     skip_cleanup: true
     on:
         tags: true
+
