@@ -107,6 +107,7 @@ function linkInNewTab(a) {
 		}
 		e.preventDefault();
 	});
+	return a;
 }
 
 function createLink(toDOM,url,title) {
@@ -114,6 +115,7 @@ function createLink(toDOM,url,title) {
 	a.href = url; a.innerText = title;
 	linkInNewTab(a);
 	toDOM.appendChild(a);
+	return a;
 }
 
 
@@ -221,7 +223,6 @@ function main() {
         document.querySelector("#verif-insoumis").classList.remove("active");
         document.querySelector("#decodex-insoumis-window").classList.add('active');
         document.querySelector("#more-info-insoumis").href = "https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias";
-		linkInNewTab(document.querySelector("#more-info-insoumis"));
     }
     else {
         document.querySelector("#verif-insoumis").style.display = "block";
@@ -255,13 +256,9 @@ function main() {
                 }
             }
     });
-    document.querySelector('#more-info-insoumis').addEventListener('click', function(e){
-        if(e.target.href!==undefined){
-            browser.tabs.create({url:e.target.href});
-        }
-        e.preventDefault();
-        window.close();
-    });
+	
+	linkInNewTab(document.querySelector("#more-info-insoumis"));
+	
     for(var i=0;i<max_notes;i++){
         document.querySelector("#alert"+i).style.color = colors[i];
     }
