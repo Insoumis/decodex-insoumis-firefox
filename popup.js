@@ -99,6 +99,18 @@ function refreshDatabase(e){
     this.blur();
 }
 
+function linkInNewTab(a) {
+	a.addEventListener('click', function(e){
+		if(e.target.href!==undefined){
+			browser.tabs.create({url:e.target.href});
+		}
+		e.preventDefault();
+		window.close();
+	});
+}
+
+
+
 function main() {
 	//console && console.log('start main in popup.js');
 
@@ -193,6 +205,7 @@ function main() {
             var obj = background.sources[i];
             var a = document.createElement("a");
             a.href = obj.url;
+			linkInNewTab(a);
             a.innerText = obj.title;
             document.querySelector("#sources span.content").appendChild(a);
         }
@@ -204,6 +217,7 @@ function main() {
         document.querySelector("#verif-insoumis").classList.remove("active");
         document.querySelector("#decodex-insoumis-window").classList.add('active');
         document.querySelector("#more-info-insoumis").href = "https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias";
+		linkInNewTab(document.querySelector("#more-info-insoumis"));
     }
     else {
         document.querySelector("#verif-insoumis").style.display = "block";
