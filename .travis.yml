@@ -14,7 +14,7 @@ install:
 
 script: web-ext lint && web-ext build
 
-before_deploy: tag=$(git describe --exact-match --tags HEAD) &&  mv ./web-ext-artifacts/*.xpi decodex-insoumis-${tag}.xpi
+before_deploy: tag=$(git describe --exact-match --tags HEAD|sed "s/firefox-//") &&  mv web-ext-artifacts/*.zip decodex-insoumis-${tag/firefox-}.xpi
 
 deploy:
     provider: releases
