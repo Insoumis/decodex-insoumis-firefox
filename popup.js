@@ -101,12 +101,19 @@ function refreshDatabase(e){
 
 function linkInNewTab(a) {
 	a.addEventListener('click', function(e){
-		if(e.target.href!==undefined){
+		if (e.target.href!==undefined) {
 			browser.tabs.create({url:e.target.href});
+			window.close();
 		}
 		e.preventDefault();
-		window.close();
 	});
+}
+
+function createLink(toDOM,url,title) {
+    var a = document.createElement("a");
+	a.href = url; a.innerText = title;
+	linkInNewTab(a);
+	toDOM.appendChild(a);
 }
 
 
@@ -200,15 +207,12 @@ function main() {
         //document.querySelector("#conflicts span.content").innerText = background.conflits;
         //document.querySelector("#subsidies span.content").innerText = background.subventions;
 
-        document.querySelector("#sources span.content").innerText = "";
-        for(i in background.sources) {
-            var obj = background.sources[i];
-            var a = document.createElement("a");
-            a.href = obj.url;
-			linkInNewTab(a);
-            a.innerText = obj.title;
-            document.querySelector("#sources span.content").appendChild(a);
+		var par = document.querySelector("#sources span.content"); par.innerText = "";
+        for(var i in background.sources) {
+			var obj = background.sources[i];
+			createLink(par,obj.url,obj.title);
         }
+		
         // background.sources.forEach(function(obj, i){
         //});
 
