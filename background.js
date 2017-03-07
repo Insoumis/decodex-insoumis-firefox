@@ -242,146 +242,153 @@ function debunkSite(u, t, d){
             console && console.info("debunkSite : var results");
             console && console.log(results);
         }
-        try {
-            urls = results.urls;
-            sites = results.sites;
-            debunker = urls.hasOwnProperty(u);
-            if (debunker == true) {
-                site_id = urls[u];
-                if (2 <= _debug) {
-                    console && console.log('site FOUND ! ', site_id);
-                }
-                try {
-                    site_actif     = sites[site_id][col_nom];                    // nom du site
-                    note_decodex   = parseInt(sites[site_id][col_note_decodex]); // note decodex
-                    soumission     = parseInt(sites[site_id][col_soumission]);   // note insoumis
-                    notule         = sites[site_id][col_desc];                   // description originale
-                    slug           = sites[site_id][col_slug];                   // nom normalisé
 
-                    var proprietaire1 = sites[site_id][col_proprietaire1];      // propriétaires
-                    var fortunes1      = sites[site_id][col_fortune1     ];      // propriétaires
-                    var marque1        = sites[site_id][col_marque1      ];      // propriétaires
-                    var influence1     = sites[site_id][col_influence1   ];      // propriétaires
-
-                    var proprietaire2 = sites[site_id][col_proprietaire2];      // propriétaires
-                    var fortunes2      = sites[site_id][col_fortune2     ];      // propriétaires
-                    var marque2        = sites[site_id][col_marque2      ];      // propriétaires
-                    var influence2     = sites[site_id][col_influence2   ];      // propriétaires
-
-                    var proprietaire3 = sites[site_id][col_proprietaire3];      // propriétaires
-                    var fortunes3      = sites[site_id][col_fortune3     ];      // propriétaires
-                    var marque3        = sites[site_id][col_marque3      ];      // propriétaires
-                    var influence3     = sites[site_id][col_influence3   ];      // propriétaires
-
-                    proprietaires = [proprietaire1, proprietaire2, proprietaire3];
-                    fortunes      = [fortunes1    , fortunes2    , fortunes3    ];
-                    marques       = [marque1     , marque2       , marque3      ];
-                    influences    = [influence1  , influence2    , influence3   ];
-
-                    subventions    = sites[site_id][col_subventions];            // Montant des subventions d'état
-                    publicite      = sites[site_id][col_pub];                    // Pub ?
-
-                    var raw_sources = sites[site_id][col_sources];                // Nos sources (urls séparés par virgule et/ou espace)
-
-                    if (3 <= _debug) {
-                        console && console.info("sources avant markdown", sources);
-                    }
-                    // Markdown style
-                    var regex = new RegExp(/\[([^\]]*?)\]\(([^\)]*?)\)[, ]{0,2}/gm);
-                    match = regex.exec(raw_sources);
-                    while (match != null) {
-                        title = match[1];
-                        url   = match[2];
-                        sources.push({"url":url, "title":title});
-                        match = regex.exec(raw_sources);
-                    }
-
-                    if (3 <= _debug) {
-                        console && console.log("sources apres markdown", sources);
-                    }
-
-                    // URL toute seule
-                    var regex = new RegExp(/^(http[s]?:\/\/([^/]+)\/[^" ,]+)[^"]{1,2}$/g);
-                    match = regex.exec(raw_sources);
-                    while (match != null) {
-                        url   = match[1];
-                        title = match[2];
-                        sources.push({"url":url, "title":title});
-                        match = regex.exec(raw_sources);
-                    }
-
-                    if (3 <= _debug) {
-                        console && console.log("sources apres urls simples", sources);
-                    }
-
+        if ("urls" in results) {
+            if (_debug > 4) {
+                console && console.log("urls is in results");
+            }
+            try {
+                urls = results.urls;
+                sites = results.sites;
+                debunker = urls.hasOwnProperty(u);
+                if (debunker == true) {
+                    site_id = urls[u];
                     if (2 <= _debug) {
-                        console && console.group("tout s'est bien passé");
-                        console && console.log('site_actif     =',site_actif     );
-                        console && console.log('note_decodex   =',note_decodex   );
-                        console && console.log('soumission     =',soumission     );
-                        console && console.log('notule         =',notule         );
-                        console && console.log('slug           =',slug           );
-                        console && console.log('proprietaires  =',proprietaires  );
-                        console && console.log('interets       =',interets       );
-                        console && console.log('conflits       =',conflits       );
-                        console && console.log('subventions    =',subventions    );
-                        console && console.log('sources        =',sources        );
-                        console && console.groupEnd();
-
+                        console && console.log('site FOUND ! ', site_id);
                     }
-                } catch(e) {
-                    if (1 <= _debug) {
-                        console && console.error("ERREUR DEBUNKER");
-                        console && console.error(e);
-                        console && console.log(sites[site_id]);
+                    try {
+                        site_actif     = sites[site_id][col_nom];                    // nom du site
+                        note_decodex   = parseInt(sites[site_id][col_note_decodex]); // note decodex
+                        soumission     = parseInt(sites[site_id][col_soumission]);   // note insoumis
+                        notule         = sites[site_id][col_desc];                   // description originale
+                        slug           = sites[site_id][col_slug];                   // nom normalisé
+
+                        var proprietaire1 = sites[site_id][col_proprietaire1];      // propriétaires
+                        var fortunes1      = sites[site_id][col_fortune1     ];      // propriétaires
+                        var marque1        = sites[site_id][col_marque1      ];      // propriétaires
+                        var influence1     = sites[site_id][col_influence1   ];      // propriétaires
+
+                        var proprietaire2 = sites[site_id][col_proprietaire2];      // propriétaires
+                        var fortunes2      = sites[site_id][col_fortune2     ];      // propriétaires
+                        var marque2        = sites[site_id][col_marque2      ];      // propriétaires
+                        var influence2     = sites[site_id][col_influence2   ];      // propriétaires
+
+                        var proprietaire3 = sites[site_id][col_proprietaire3];      // propriétaires
+                        var fortunes3      = sites[site_id][col_fortune3     ];      // propriétaires
+                        var marque3        = sites[site_id][col_marque3      ];      // propriétaires
+                        var influence3     = sites[site_id][col_influence3   ];      // propriétaires
+
+                        proprietaires = [proprietaire1, proprietaire2, proprietaire3];
+                        fortunes      = [fortunes1    , fortunes2    , fortunes3    ];
+                        marques       = [marque1     , marque2       , marque3      ];
+                        influences    = [influence1  , influence2    , influence3   ];
+
+                        subventions    = sites[site_id][col_subventions];            // Montant des subventions d'état
+                        publicite      = sites[site_id][col_pub];                    // Pub ?
+
+                        var raw_sources = sites[site_id][col_sources];                // Nos sources (urls séparés par virgule et/ou espace)
+
+                        if (3 <= _debug) {
+                            console && console.info("sources avant markdown", sources);
+                        }
+                        // Markdown style
+                        var regex = new RegExp(/\[([^\]]*?)\]\(([^\)]*?)\)[, ]{0,2}/gm);
+                        match = regex.exec(raw_sources);
+                        sources = [];
+                        while (match != null) {
+                            title = match[1];
+                            url   = match[2];
+                            sources.push({"url":url, "title":title});
+                            match = regex.exec(raw_sources);
+                        }
+
+                        if (3 <= _debug) {
+                            console && console.log("sources apres markdown", sources);
+                        }
+
+                        // URL toute seule
+                        var regex = new RegExp(/^(http[s]?:\/\/([^/]+)\/[^" ,]+)[^"]{1,2}$/g);
+                        match = regex.exec(raw_sources);
+                        while (match != null) {
+                            url   = match[1];
+                            title = match[2];
+                            sources.push({"url":url, "title":title});
+                            match = regex.exec(raw_sources);
+                        }
+
+                        if (3 <= _debug) {
+                            console && console.log("sources apres urls simples", sources);
+                        }
+
+                        if (2 <= _debug) {
+                            console && console.group("tout s'est bien passé");
+                            console && console.log('site_actif     =',site_actif     );
+                            console && console.log('note_decodex   =',note_decodex   );
+                            console && console.log('soumission     =',soumission     );
+                            console && console.log('notule         =',notule         );
+                            console && console.log('slug           =',slug           );
+                            console && console.log('proprietaires  =',proprietaires  );
+                            console && console.log('interets       =',interets       );
+                            console && console.log('conflits       =',conflits       );
+                            console && console.log('subventions    =',subventions    );
+                            console && console.log('sources        =',sources        );
+                            console && console.groupEnd();
+
+                        }
+                    } catch(e) {
+                        if (1 <= _debug) {
+                            console && console.error("ERREUR DEBUNKER");
+                            console && console.error(e);
+                            console && console.log(sites[site_id]);
+                        }
+                    }
+
+                    browser.browserAction.setIcon({
+                        path: "img/icones/icon" + (soumission) + ".png", // note
+                        tabId: t
+                    });
+                    if(results.infobulles[soumission] == true && d == true){  // note
+                        browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                            browser.tabs.sendMessage(tabs[0].id, {text: "soumission"+soumission}, function(response) { // note
+                            });
+                        });
                     }
                 }
-
-                browser.browserAction.setIcon({
-                    path: "img/icones/icon" + (soumission) + ".png", // note
-                    tabId: t
-                });
-                if(results.infobulles[soumission] == true && d == true){  // note
-                    browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                        browser.tabs.sendMessage(tabs[0].id, {text: "soumission"+soumission}, function(response) { // note
-                        });
+                else {
+                    if (2 <= _debug) {
+                        console && console.info("site non trouvé", u);
+                        console && console.log(u);
+                    }
+                    browser.browserAction.setIcon({
+                        path: "icone.png",
+                        tabId: t
                     });
                 }
-            }
-            else {
-                if (2 <= _debug) {
-                    console && console.info("site non trouvé", u);
-                    console && console.log(u);
+
+                if (u.match(/youtube.com/)) {
+
+                    if (null == soumission)
+                        soumission  = 0;                             // propriétaires
+
+                    browser.browserAction.setIcon({
+                        path: "img/icones/icon" + (soumission) + ".png", // note
+                        tabId: t
+                    });
+
+                    if ("" == proprietaires)
+                        proprietaires  = "Youtube est une propriété de la Holding Alphabet (Google)";                             // propriétaires
+                    if ("" == interets)
+                        interets       = "Le groupe Alphabet(Google) a de nombreux intérêts internationnaux. Son business model est fortement basé sur la publicité et son quasi-monopole de la publicité. Google exerce de nombreuses pressions sur les états et l'Union Européenne.";                               // intérets
+                    if ("" == conflits)
+                        conflits       = "Youtube peut être un outil de partage de connaissances. Les vidéastes et utilisateurs de la plateforme youtube ne sont pas forcément soumis à Google, mais… ";  // exemple de conflits / complicité idéologique
+                    if ("" == subventions)
+                        subventions    = "";             // Montant des subventions d'état
+                    if ("" == sources)
+                        sources        = "";             // Nos sources (urls séparés par virgule et/ou espace)
                 }
-                browser.browserAction.setIcon({
-                    path: "icone.png",
-                    tabId: t
-                });
+            } catch(e) {
+                console && console.error(e);
             }
-
-            if (u.match(/youtube.com/)) {
-
-                if (null == soumission)
-                    soumission  = 0;                             // propriétaires
-
-                browser.browserAction.setIcon({
-                    path: "img/icones/icon" + (soumission) + ".png", // note
-                    tabId: t
-                });
-
-                if ("" == proprietaires)
-                    proprietaires  = "Youtube est une propriété de la Holding Alphabet (Google)";                             // propriétaires
-                if ("" == interets)
-                    interets       = "Le groupe Alphabet(Google) a de nombreux intérêts internationnaux. Son business model est fortement basé sur la publicité et son quasi-monopole de la publicité. Google exerce de nombreuses pressions sur les états et l'Union Européenne.";                               // intérets
-                if ("" == conflits)
-                    conflits       = "Youtube peut être un outil de partage de connaissances. Les vidéastes et utilisateurs de la plateforme youtube ne sont pas forcément soumis à Google, mais… ";  // exemple de conflits / complicité idéologique
-                if ("" == subventions)
-                    subventions    = "";             // Montant des subventions d'état
-                if ("" == sources)
-                    sources        = "";             // Nos sources (urls séparés par virgule et/ou espace)
-            }
-        } catch(e) {
-            console && console.error(e);
         }
 
         var today = new Date();
