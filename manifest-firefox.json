@@ -1,13 +1,17 @@
 {
   "manifest_version": 2,
   "name": "Decodex Insoumis",
-  "version": "1.1.4.22",
+  "version": "1.1.4.21",
   "description": "Avec le Décodex Insoumis, apprenez en un clin d'oeil qui se trouve derri&egrave;re le média que vous &ecirc;tre en train de lire !",
+  "applications": {
+      "gecko": {
+          "id": "decodex-insoumis@insoumis.online"
+      }
+  },
   "background": {
     "scripts": ["background.js", "content.js", "install.js"],
     "persistent": false
   },
-  "homepage_url": "http://decodex.insoumis.online/",
   "icons": {
     "16": "icone.png"
   },
@@ -24,11 +28,11 @@
     }
   ],
   "permissions" : [
-    "declarativeContent",
     "tabs",
     "storage",
     "notifications",
     "activeTab",
+    "webRequest",
 
     "http://decodex.insoumis.online/database.json"
   ]

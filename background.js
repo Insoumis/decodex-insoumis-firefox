@@ -71,6 +71,8 @@
                                ,:`
 */
 
+var browser = browser || chrome;
+
 var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
 if (_debug) {
     console && console.warn("DEBUG LEVEL", _debug);
@@ -409,6 +411,9 @@ function debunkSite(u, t, d){
 
 function checkSite(do_display){
     browser.tabs.query({currentWindow: true, active: true}, function(tabs){
+        if (!tabs.length) {
+            return;
+        }
         var tab;
         for (active_tab of tabs) {
             tab = active_tab;

@@ -70,6 +70,8 @@
                              .####+
                                ,:`
  */
+ 
+ var browser = browser || chrome;
 
 var max_notes = 6;  // (de 0 à 5 = 6 notes)
 
@@ -100,9 +102,10 @@ function refreshDatabase(e){
 }
 
 function linkInNewTab(a) {
+	var href = a.href; // une fermeture ... sinon ça ne marche pas si le <a> contient par exemple une <img>
 	a.addEventListener('click', function(e){
-		if (e.target.href!==undefined) {
-			browser.tabs.create({url:e.target.href});
+		if (href!==undefined) {
+			browser.tabs.create({url:href});
 			window.close();
 		}
 		e.preventDefault();
@@ -117,8 +120,6 @@ function createLink(toDOM,url,title) {
 	toDOM.appendChild(a);
 	return a;
 }
-
-
 
 function main() {
 	//console && console.log('start main in popup.js');
@@ -257,6 +258,7 @@ function main() {
             }
     });
 	
+	linkInNewTab(document.querySelector(".propos-par a"));
 	linkInNewTab(document.querySelector("#more-info-insoumis"));
 	
     for(var i=0;i<max_notes;i++){
