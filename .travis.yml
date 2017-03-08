@@ -11,9 +11,7 @@ addons:
 install:
   - npm install -g web-ext
 
-script : cp manifest-firefox.json manifest.json \
-    && tag=$(git describe --exact-match --tags HEAD) \
-    && sed -i "s/{VERSION}/${version}/" manifest.json
+script : git describe --always
 
 before_deploy:
   - scripts/deploy-firefox.sh --publish
