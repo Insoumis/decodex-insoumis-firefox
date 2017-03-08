@@ -12,18 +12,20 @@ addons:
 install:
     - npm install -g web-ext
 
+before_script :
+    - tag=$(git describe --exact-match --tags HEAD)
 script:
-    - scripts/deploy-firefox.sh
-    - scripts/deploy-chrome.sh
+    - scripts/deploy-firefox.sh $tag
+    - scripts/deploy-chrome.sh $tag
+
 
 deploy:
-    - provider: releases
-      api_key: "${GH_TOKEN}"
-      file:
-          - "web-ext-artifacts/decodex-insoumis-firefox-${tag}.xpi"
-          - "build/decodex-insoumis-chrome-${tag}.zip"
-      skip_cleanup: true
-      on:
-        tags: true
+    provider: releases
+    api_key: "${GITHUB_TOKEN}"
+    file:
+      - "web-ext-artifacts/decodex-insoumis-firefox-${tag}.xpi"
+      - "build/decodex-insoumis-chrome-${tag}.zip"
+    skip_cleanup: true
+    on:
+      tags: true
 
-after_deploy: web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET}
