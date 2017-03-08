@@ -7,18 +7,17 @@
 #    exit 128
 #fi
 
-cp manifest-firefox.json manifest.json
-
-echo "LE TAG"
-echo $tag;
+tag=$(git describe --exact-match --tags HEAD)
+echo "tag : $tag"
 
 if [ -z "$tag" ]; then
     echo "missing version number";
     exit 0;
 fi
 
-
 version=$tag
+
+cp manifest-firefox.json manifest.json
 echo "deploy version $version";
 sed -i "s/{VERSION}/${version}/" manifest.json
 
@@ -61,20 +60,38 @@ fi
 
 version=$(cat manifest.json|grep $tag|awk '{print $2}');
 if [[ -z "$version" ]]; then
-    echo "version($version) and tag ($tag) does not match. Do not deploy";
+    echo "version in manifest and tag ($tag) does not match. Do not deploy";
     exit 0;
 fi
 echo "version in manifest matches : $version"
 
+if [[ ! -d build ]]; then
+    mkdir build
+fi
+
+# {{{ firefox specific
 web-ext lint --ignore-files=scripts manifest-firefox.json manifest-chrome.json build
 
-web-ext build --ignore-files=scripts manifest-firefox.json manifest-chrome.json build
-mv web-ext-artifacts/decodex_insoumis-${tag}.zip web-ext-artifacts/decodex_insoumis-${tag}.xpi
+web-ext build \
+	--ignore-files=scripts manifest-firefox.json manifest-chrome.json build \
+	--artifacts-dir=build
+
+mv build/decodex_insoumis-${tag}.zip build/decodex_insoumis-firefox-${tag}.xpi
+# }}} firefox specific
+
+if [[ "$1" != '--publish' ]];then
+	echo "NON PAS DE PUBLISH"
+	exit 0
+fi
+
 
 echo "envoie de l'extension firefox à addons.mozilla.org …"
 
+# {{{ firefox specific
 web-ext sign --ignore-files=scripts manifest-firefox.json manifest-chrome.json \
     --api-key ${API_KEY} --api-secret ${API_SECRET}
+
+# }}} firefox specific
 
 if [[ $? -ne 0 ]]; then
     echo "une erreur est survenue"

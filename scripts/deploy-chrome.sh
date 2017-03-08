@@ -7,18 +7,17 @@
 #    exit 128
 #fi
 
-cp manifest-chrome.json manifest.json
-
-echo "LE TAG"
-echo $tag;
+tag=$(git describe --exact-match --tags HEAD)
+echo "tag : $tag"
 
 if [ -z "$tag" ]; then
     echo "missing version number";
     exit 0;
 fi
 
-
 version=$tag
+
+cp manifest-chrome.json manifest.json
 echo "deploy version $version";
 sed -i "s/{VERSION}/${version}/" manifest.json
 
@@ -61,24 +60,31 @@ fi
 
 version=$(cat manifest.json|grep $tag|awk '{print $2}');
 if [[ -z "$version" ]]; then
-    echo "version and tag ($tag) does not match. Do not deploy";
+    echo "version in manifest and tag ($tag) does not match. Do not deploy";
     exit 0;
 fi
 echo "version in manifest matches : $version"
 
-
-FILE_NAME=build/decodex-insoumis-${tag}.zip
-if [[ -d build ]]; then
-    rm build/*
-else
+if [[ ! -d build ]]; then
     mkdir build
 fi
 
+# {{{ chrome specific
+FILE_NAME=build/decodex_insoumis-chrome-${tag}.zip
+
 zip -r ${FILE_NAME} ./* \
-    --exclude \*script* manifest-chrome.json manifest-firefox.json build/* \*web-ext-artifacts/*
+    --exclude \*script* manifest-chrome.json manifest-firefox.json \*build/* \*web-ext-artifacts/*
+# }}} chrome specific
 
-echo "envoie de l'extension firefox à googleapis.com/upload/chromewebstore …"
+if [[ "$1" != '--publish' ]];then
+	echo "NON PAS DE PUBLISH"
+	exit 0
+fi
 
+
+echo "envoie de l'extension chrome à googleapis.com/upload/chromewebstore …"
+
+# {{{ chrome specific
 token=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&code=$CODE&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob")
 token=$(echo "$token"|grep access|awk '{print $3}'|awk -F\" '{print $2}')
 
@@ -89,6 +95,8 @@ curl \
     -T $FILE_NAME \
     -v \
     https://www.googleapis.com/upload/chromewebstore/v1.1/items/$APP_ID
+
+# }}} chrome specific
 
 if [[ $? -ne 0 ]]; then
     echo "une erreur est survenue"
