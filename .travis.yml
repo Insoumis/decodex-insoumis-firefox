@@ -11,7 +11,7 @@ addons:
 install:
   - npm install -g web-ext
 
-script:
+before_deploy:
   - scripts/deploy-firefox.sh --publish
   - scripts/deploy-chrome.sh --publish
 
