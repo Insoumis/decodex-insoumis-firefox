@@ -70,6 +70,8 @@
                              .####+
                                ,:`
  */
+var browser = browser || chrome;
+
 (function decodexInfobulle(){
     'use strict';
 

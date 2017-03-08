@@ -70,6 +70,8 @@
                              .####+
                                ,:`
  */
+ 
+ var browser = browser || chrome;
 
 var max_notes = 6;  // (de 0 à 5 = 6 notes)
 
@@ -97,6 +99,26 @@ function refreshDatabase(e){
         'last_update': ((new Date().getTime()) - 24*60*60*1000)
     });
     this.blur();
+}
+
+function linkInNewTab(a) {
+	var href = a.href; // une fermeture ... sinon ça ne marche pas si le <a> contient par exemple une <img>
+	a.addEventListener('click', function(e){
+		if (href!==undefined) {
+			browser.tabs.create({url:href});
+			window.close();
+		}
+		e.preventDefault();
+	});
+	return a;
+}
+
+function createLink(toDOM,url,title) {
+    var a = document.createElement("a");
+	a.href = url; a.innerText = title;
+	linkInNewTab(a);
+	toDOM.appendChild(a);
+	return a;
 }
 
 function main() {
@@ -188,14 +210,12 @@ function main() {
         //document.querySelector("#conflicts span.content").innerText = background.conflits;
         //document.querySelector("#subsidies span.content").innerText = background.subventions;
 
-        document.querySelector("#sources span.content").innerText = "";
-        for(i in background.sources) {
-            var obj = background.sources[i];
-            var a = document.createElement("a");
-            a.href = obj.url;
-            a.innerText = obj.title;
-            document.querySelector("#sources span.content").appendChild(a);
+		var par = document.querySelector("#sources span.content"); par.innerText = "";
+        for(var i in background.sources) {
+			var obj = background.sources[i];
+			createLink(par,obj.url,obj.title);
         }
+		
         // background.sources.forEach(function(obj, i){
         //});
 
@@ -203,7 +223,7 @@ function main() {
         document.querySelector("#decodex-insoumis-window").style.display = "block";
         document.querySelector("#verif-insoumis").classList.remove("active");
         document.querySelector("#decodex-insoumis-window").classList.add('active');
-        document.querySelector("#more-info-insoumis").href = "https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias";
+        //document.querySelector("#more-info-insoumis").href = "https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias";
     }
     else {
         document.querySelector("#verif-insoumis").style.display = "block";
@@ -237,13 +257,10 @@ function main() {
                 }
             }
     });
-    document.querySelector('#more-info-insoumis').addEventListener('click', function(e){
-        if(e.target.href!==undefined){
-            browser.tabs.create({url:e.target.href});
-        }
-        e.preventDefault();
-        window.close();
-    });
+	
+	//linkInNewTab(document.querySelector(".propos-par a"));
+	//linkInNewTab(document.querySelector("#more-info-insoumis"));
+	
     for(var i=0;i<max_notes;i++){
         document.querySelector("#alert"+i).style.color = colors[i];
     }
