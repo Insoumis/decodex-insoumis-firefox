@@ -98,9 +98,13 @@ curl \
 
 # }}} chrome specific
 
-if [[ $? -ne 0 ]]; then
-    echo "une erreur est survenue"
-    exit 128;
+error=$?
+if [[ $error -ne 0 ]]; then
+	echo "une erreur est survenue (error: $error)"
+	if [[ $error -eq 1 ]]; then
+		exit 0
+	fi
+	exit $error
 else
     echo "une nouvelle version de l'extension a été envoyée."
     exit 0;

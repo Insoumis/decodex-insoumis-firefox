@@ -88,14 +88,18 @@ fi
 echo "envoie de l'extension firefox à addons.mozilla.org …"
 
 # {{{ firefox specific
-web-ext sign --ignore-files=scripts manifest-firefox.json manifest-chrome.json \
+web-ext sign --ignore-files=scripts/deploy-firefox.sh scripts/deploy-chrome.sh manifest-firefox.json manifest-chrome.json \
     --api-key ${API_KEY} --api-secret ${API_SECRET}
 
 # }}} firefox specific
 
-if [[ $? -ne 0 ]]; then
-    echo "une erreur est survenue"
-    exit 128;
+error=$?
+if [[ $error -ne 0 ]]; then
+	echo "une erreur est survenue (error: $error)"
+	if [[ $error -eq 1 ]]; then
+		exit 0
+	fi
+	exit $error
 else
     echo "une nouvelle version de l'extension a été envoyée."
     exit 0;
