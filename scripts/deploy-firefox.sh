@@ -9,7 +9,6 @@
 
 cp manifest-firefox.json manifest.json
 
-tag=$(git describe --exact-match --tags HEAD)
 echo "LE TAG"
 echo $tag;
 

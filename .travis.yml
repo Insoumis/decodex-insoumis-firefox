@@ -15,8 +15,8 @@ install:
 before_script:
   - tag=$(git describe --exact-match --tags HEAD)
 script:
-  - scripts/deploy-firefox.sh $tag
-  - scripts/deploy-chrome.sh $tag
+  - scripts/deploy-firefox.sh
+  - scripts/deploy-chrome.sh
 
 
 deploy:
