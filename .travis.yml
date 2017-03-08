@@ -16,11 +16,14 @@ script : git describe --always
 before_deploy:
   - scripts/deploy-firefox.sh --publish
   - scripts/deploy-chrome.sh --publish
+  - export RELEASE_PKG_FILE=$(ls build/*)
+  - echo "deploying $RELEASE_PKG_FILE to GitHub releases"
 
 deploy:
   provider: releases
   api_key: ${GITHUB_API_KEY}
-  file: build/*
+  file_glob: true
+  file: "${RELEASE_PKG_FILE}"
   skip_cleanup: true
   on:
     tags: true

@@ -70,10 +70,10 @@ if [[ ! -d build ]]; then
 fi
 
 # {{{ firefox specific
-web-ext lint --ignore-files=scripts manifest-firefox.json manifest-chrome.json build
+web-ext lint --ignore-files=scripts/deploy-firefox.sh scripts/deploy-chrome.sh manifest-firefox.json manifest-chrome.json build
 
 web-ext build \
-	--ignore-files=scripts manifest-firefox.json manifest-chrome.json build \
+	--ignore-files=scripts/deploy-firefox.sh scripts/deploy-chrome.sh manifest-firefox.json manifest-chrome.json build \
 	--artifacts-dir=build
 
 mv build/decodex_insoumis-${version}.zip build/decodex_insoumis-firefox-${version}.xpi
