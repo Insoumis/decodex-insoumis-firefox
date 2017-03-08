@@ -223,7 +223,7 @@ function main() {
         document.querySelector("#decodex-insoumis-window").style.display = "block";
         document.querySelector("#verif-insoumis").classList.remove("active");
         document.querySelector("#decodex-insoumis-window").classList.add('active');
-        document.querySelector("#more-info-insoumis").href = "https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias";
+        //document.querySelector("#more-info-insoumis").href = "https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias";
     }
     else {
         document.querySelector("#verif-insoumis").style.display = "block";
@@ -258,8 +258,8 @@ function main() {
             }
     });
 	
-	linkInNewTab(document.querySelector(".propos-par a"));
-	linkInNewTab(document.querySelector("#more-info-insoumis"));
+	//linkInNewTab(document.querySelector(".propos-par a"));
+	//linkInNewTab(document.querySelector("#more-info-insoumis"));
 	
     for(var i=0;i<max_notes;i++){
         document.querySelector("#alert"+i).style.color = colors[i];
