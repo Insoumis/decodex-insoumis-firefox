@@ -90,16 +90,12 @@ fi
 echo "envoie de l'extension chrome à googleapis.com/upload/chromewebstore …"
 
 # {{{ chrome specific
-token=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=$GOOGLE_CLIENT_ID&client_secret=$GOOGLE_CLIENT_SECRET&code=$GOOGLE_CODE&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob")
-token=$(echo "$token"|grep access|awk '{print $3}'|awk -F\" '{print $2}')
+# see https://github.com/pastak/chrome-webstore-manager
+webstore_token=$(chrome-webstore-manager refresh_token --client_id $GOOGLE_CLIENT_ID --client_secret $GOOGLE_CLIENT_SECRET --refresh_token $GOOGLE_REFRESH_TOKEN)
 
-curl \
-    -H "Authorization: Bearer $token"  \
-    -H "x-goog-api-version: 2" \
-    -X PUT \
-    -T $FILE_NAME \
-    -v \
-    https://www.googleapis.com/upload/chromewebstore/v1.1/items/$GOOGLE_APP_ID
+webstore upload --source $FILE_NAME --extension-id $GOOGLE_APP_ID \
+   --client-id $GOOGLE_CLIENT_ID --client-secret $GOOGLE_CLIENT_SECRET \
+   --refresh-token $webstore_token --autopublish
 
 # }}} chrome specific
 

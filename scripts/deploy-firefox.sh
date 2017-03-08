@@ -93,6 +93,7 @@ fi
 echo "envoie de l'extension firefox à addons.mozilla.org …"
 
 # {{{ firefox specific
+# see npm web-ext
 web-ext sign --ignore-files=scripts/deploy-firefox.sh scripts/deploy-chrome.sh manifest-firefox.json manifest-chrome.json \
     --api-key ${API_KEY} --api-secret ${API_SECRET}
 
