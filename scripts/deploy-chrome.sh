@@ -9,13 +9,17 @@
 
 cp manifest-chrome.json manifest.json
 
-if [ -z "$1" ]; then
+tag=$(git describe --exact-match --tags HEAD)
+echo "LE TAG"
+echo $tag;
+
+if [ -z "$tag" ]; then
     echo "missing version number";
     exit 0;
 fi
 
 
-version=$1
+version=$tag
 echo "deploy version $version";
 sed -i "s/{VERSION}/${version}/" manifest.json
 
@@ -42,7 +46,6 @@ if [[ $? -ne 0 ]]; then
     echo "syntax error content.js"
     exit 128
 fi
-
 
 tag=$(git describe --exact-match --tags HEAD)
 
@@ -72,11 +75,10 @@ else
     mkdir build
 fi
 
-zip ${FILE_NAME} ./* \
+zip -r ${FILE_NAME} ./* \
     --exclude \*script* manifest-chrome.json manifest-firefox.json build/* \*web-ext-artifacts/*
 
-echo "CANCELLED"
-exit
+echo "envoie de l'extension firefox à googleapis.com/upload/chromewebstore …"
 
 token=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&code=$CODE&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob")
 token=$(echo "$token"|grep access|awk '{print $3}'|awk -F\" '{print $2}')
@@ -88,4 +90,12 @@ curl \
     -T $FILE_NAME \
     -v \
     https://www.googleapis.com/upload/chromewebstore/v1.1/items/$APP_ID
+
+if [[ $? -ne 0 ]]; then
+    echo "une erreur est survenue"
+    exit 128;
+else
+    echo "une nouvelle version de l'extension a été envoyée."
+    exit 0;
+fi
 

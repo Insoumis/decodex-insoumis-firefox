@@ -9,13 +9,17 @@
 
 cp manifest-firefox.json manifest.json
 
-if [ -z "$1" ]; then
+tag=$(git describe --exact-match --tags HEAD)
+echo "LE TAG"
+echo $tag;
+
+if [ -z "$tag" ]; then
     echo "missing version number";
     exit 0;
 fi
 
 
-version=$1
+version=$tag
 echo "deploy version $version";
 sed -i "s/{VERSION}/${version}/" manifest.json
 
@@ -63,13 +67,21 @@ if [[ -z "$version" ]]; then
 fi
 echo "version in manifest matches : $version"
 
-web-ext lint --ignore-files=scripts manifest-firefox.json manifest-chrome.json
+web-ext lint --ignore-files=scripts manifest-firefox.json manifest-chrome.json build
 
-web-ext build --ignore-files=scripts manifest-firefox.json manifest-chrome.json
+web-ext build --ignore-files=scripts manifest-firefox.json manifest-chrome.json build
+mv web-ext-artifacts/decodex_insoumis-${tag}.zip web-ext-artifacts/decodex_insoumis-${tag}.xpi
 
-echo "STTOOOOP"
+echo "envoie de l'extension firefox à addons.mozilla.org …"
+
 web-ext sign --ignore-files=scripts manifest-firefox.json manifest-chrome.json \
     --api-key ${API_KEY} --api-secret ${API_SECRET}
-exit;
 
+if [[ $? -ne 0 ]]; then
+    echo "une erreur est survenue"
+    exit 128;
+else
+    echo "une nouvelle version de l'extension a été envoyée."
+    exit 0;
+fi
 
