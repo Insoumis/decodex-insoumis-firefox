@@ -10,9 +10,11 @@
 tag=$(git describe --exact-match --tags HEAD)
 echo "tag : $tag"
 
+publish=true
 if [ -z "$tag" ]; then
-    echo "missing version number";
-    exit 0;
+    echo "missing version number. set version to 0.0.0.0";
+	tag=0.0.0.0
+	publish=false
 fi
 
 version=$tag
@@ -45,8 +47,6 @@ if [[ $? -ne 0 ]]; then
     exit 128
 fi
 
-tag=$(git describe --exact-match --tags HEAD)
-
 no_tag=$?
 if [[ $no_tag -ne 0 ]]; then
     echo "No tag found in current HEAD. Do not deploy."
@@ -76,11 +76,16 @@ web-ext build \
 	--ignore-files=scripts manifest-firefox.json manifest-chrome.json build \
 	--artifacts-dir=build
 
-mv build/decodex_insoumis-${tag}.zip build/decodex_insoumis-firefox-${tag}.xpi
+mv build/decodex_insoumis-${version}.zip build/decodex_insoumis-firefox-${version}.xpi
 # }}} firefox specific
 
 if [[ "$1" != '--publish' ]];then
-	echo "NON PAS DE PUBLISH"
+	echo "option --publish missing"
+	exit 0
+fi
+
+if [[ !$publish ]];then
+	echo "invalid version ($version) to publish."
 	exit 0
 fi
 
