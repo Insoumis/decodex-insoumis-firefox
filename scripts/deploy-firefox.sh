@@ -63,7 +63,7 @@ if [[ -z "$version" ]]; then
     echo "version in manifest and tag ($tag) does not match. Do not deploy";
     exit 0;
 fi
-echo "version in manifest matches : $version"
+echo "version in manifest matches tag : $tag"
 
 if [[ ! -d build ]]; then
     mkdir build
@@ -84,8 +84,8 @@ if [[ "$1" != '--publish' ]];then
 	exit 0
 fi
 
-if [[ !$publish ]];then
-	echo "invalid version ($version) to publish."
+if [[ $publish == false ]];then
+	echo "invalid version ($tag) to publish."
 	exit 0
 fi
 

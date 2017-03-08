@@ -63,14 +63,14 @@ if [[ -z "$version" ]]; then
     echo "version in manifest and tag ($tag) does not match. Do not deploy";
     exit 0;
 fi
-echo "version in manifest matches : $version"
+echo "version in manifest matches tag : $tag"
 
 if [[ ! -d build ]]; then
     mkdir build
 fi
 
 # {{{ chrome specific
-FILE_NAME=build/decodex_insoumis-chrome-${version}.zip
+FILE_NAME=build/decodex_insoumis-chrome-${tag}.zip
 
 zip -r ${FILE_NAME} ./* \
     --exclude \*script* manifest-chrome.json manifest-firefox.json \*build/* \*web-ext-artifacts/*
@@ -81,8 +81,8 @@ if [[ "$1" != '--publish' ]];then
 	exit 0
 fi
 
-if [[ !$publish ]];then
-	echo "invalid version ($version) to publish."
+if [[ $publish == false ]];then
+	echo "invalid version ($tag) to publish."
 	exit 0
 fi
 
@@ -90,7 +90,7 @@ fi
 echo "envoie de l'extension chrome à googleapis.com/upload/chromewebstore …"
 
 # {{{ chrome specific
-token=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&code=$CODE&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob")
+token=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=$GOOGLE_CLIENT_ID&client_secret=$GOOGLE_CLIENT_SECRET&code=$GOOGLE_CODE&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob")
 token=$(echo "$token"|grep access|awk '{print $3}'|awk -F\" '{print $2}')
 
 curl \
@@ -99,7 +99,7 @@ curl \
     -X PUT \
     -T $FILE_NAME \
     -v \
-    https://www.googleapis.com/upload/chromewebstore/v1.1/items/$APP_ID
+    https://www.googleapis.com/upload/chromewebstore/v1.1/items/$GOOGLE_APP_ID
 
 # }}} chrome specific
 
