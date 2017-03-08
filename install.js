@@ -129,17 +129,18 @@ function main(){
     });
 }
 document.addEventListener('DOMContentLoaded', function () {
-	for(var i=0;i<6;i++){
-		try {
-			var selector = document.getElementById('check-alert' + i);
-			selector.addEventListener('click', bulleStore);
-		} catch(e) {
-			// generait des erreurs
-			if (0) {
-				console && console.info("error in install.js for check-alert"+i);
-				console && console.error(e);
-			}
-		}
+    try {
+        for(var i=0;i<6;i++){
+            var selector = document.getElementById('check-alert' + i);
+            selector.addEventListener('click', bulleStore);
+        }
+    } catch(e) {
+        // generait des erreurs
+        if (0) {
+            console && console.info("error in install.js for check-alert"+i);
+            console && console.error(e);
+        }
+    }
 
     try {
         for(var i=0;i<6;i++){
