@@ -11,6 +11,8 @@ addons:
 install:
   - npm install -g web-ext
   - npm install -g chrome-webstore-manager
+  - npm install -g chrome-webstore-upload
+  - npm install -g chrome-webstore-upload-cli
 
 script : git describe --always
 
