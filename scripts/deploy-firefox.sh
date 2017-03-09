@@ -95,12 +95,12 @@ echo "envoie de l'extension firefox à addons.mozilla.org …"
 # {{{ firefox specific
 # see npm web-ext
 
-rm manifest-firefox.json manifest-chrome.json scripts/deploy-firefox-sh scripts/deploy-chrome.sh
+rm manifest-firefox.json manifest-chrome.json scripts/deploy-firefox.sh scripts/deploy-chrome.sh
 
 web-ext sign --api-key ${API_KEY} --api-secret ${API_SECRET} \
     --ignore-files manifest-firefox.json manifest-chrome.json "scripts/*" scripts/deploy-firefox-sh scripts/deploy-chrome.sh
 
-git checkout manifest-firefox.json manifest-chrome.json scripts/deploy-firefox-sh scripts/deploy-chrome.sh
+git checkout manifest-firefox.json manifest-chrome.json scripts/deploy-firefox.sh scripts/deploy-chrome.sh
 # }}} firefox specific
 
 error=$?
