@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Decodex Insoumis",
   "version": "{VERSION}",
-  "description": "Avec le Décodex Insoumis, apprenez en un clin d'oeil qui se trouve derri&egrave;re le média que vous &ecirc;tre en train de lire !",
+  "description": "Avec le Décodex Insoumis, apprenez en un clin d'oeil qui se trouve derrière le média que vous être en train de lire !",
   "background": {
     "scripts": ["background.js", "content.js", "install.js"],
     "persistent": false
