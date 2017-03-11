@@ -141,8 +141,6 @@ function main() {
         }
         else {
             document.querySelector("#les-decodeurs").innerText = "Les Décodeurs du Monde ne connaissent pas ce site";
-            document.querySelector("#les-decodeurs #description").style["color"] = "black";
-            document.querySelector("#les-decodeurs #description").innerText = "";
         }
 
         document.querySelector("#proprietaires span.content").innerText = background.proprietaires.join(",");
