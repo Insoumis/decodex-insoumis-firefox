@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# TODO:
+# * functions to define more options:
+# --stash-first (stash before deploy, test mode mode only)
+# --skip-delete (do not delete files in scripts/)
+# * create only one deploy file to make the both jobs
+
 # Validation (require json_pp)
 #cat manifest.json|json_pp
 #if [[ $? ]]; then
@@ -7,8 +13,30 @@
 #    exit 128
 #fi
 
+release_path=build/
+file_prefix=decodex_insoumis
+platform_name=$(basename $0|sed "s/deploy-\(.*\).sh/\1/");
+if [[ "$platform_name" == "chrome" ]];then
+    extension='zip'
+else
+    extension='xpi'
+fi
+
+
+deleteFiles=false
+
 tag=$(git describe --exact-match --tags HEAD)
+filesToRemove="manifest-firefox.json manifest-chrome.json scripts/deploy-firefox.sh scripts/deploy-chrome.sh"
 echo "tag : $tag"
+
+gitstatus=$(git status -s)
+if [ -n "$gitstatus" ]; then
+    git status
+    if [[ $deleteFiles == true ]]; then
+        echo "Aborting (repo not clean, some files may be deleted)…"
+        exit 1;
+    fi
+fi
 
 publish=true
 if [ -z "$tag" ]; then
@@ -19,7 +47,10 @@ fi
 
 version=$tag
 
-cp manifest-chrome.json manifest.json
+filename_release_path=build/${file_prefix}-${platform_name}-${tag}.${extension}
+
+cp manifest-${platform_name}.json manifest.json
+
 echo "deploy version $version";
 sed -i "s/{VERSION}/${version}/" manifest.json
 
@@ -58,46 +89,61 @@ if [[ -z "$tag" ]]; then
     exit 0;
 fi
 
-version=$(cat manifest.json|grep $tag|awk '{print $2}');
+version=$(cat manifest.json|grep $tag|awk -F\" '{print $4}');
 if [[ -z "$version" ]]; then
-    echo "version in manifest and tag ($tag) does not match. Do not deploy";
+    echo "version missing in manifest.json. Deploy aborted."
     exit 0;
 fi
-echo "version in manifest matches tag : $tag"
+
+if [[ "$version" != "$tag" ]]; then
+    echo "Mismatch version: manifest=${version}, tag=${tag}. Do not deploy";
+    exit 0;
+fi
+echo "version in manifest matches tag : ${tag}. Deploy can happens."
 
 if [[ ! -d build ]]; then
     mkdir build
 fi
 
-# {{{ chrome specific
-FILE_NAME=build/decodex_insoumis-chrome-${tag}.zip
+# {{{ platform specific -- prepare to publish
+# todo: lint
 
-zip -r ${FILE_NAME} ./* \
+zip -r ${filename_release_path} ./* \
     --exclude \*script* manifest-chrome.json manifest-firefox.json \*build/* \*web-ext-artifacts/*
-# }}} chrome specific
+
+# mv
+
+if [[ $deleteFiles == true ]]; then
+    echo "DO NOT DELETE"
+    exit 2
+    if [[ -n "$filesToRemove" ]]; then
+        rm ${filesToRemove}
+    fi
+else
+    echo "/!\ The following files may be part of the package $filesToRemove"
+fi
+# }}} platform specific
 
 if [[ "$1" != '--publish' ]];then
-	echo "option --publish missing"
+	echo "option --publish missing."
 	exit 0
 fi
 
 if [[ $publish == false ]];then
-	echo "invalid version ($tag) to publish."
+	echo "--publish option found but no tag found."
 	exit 0
 fi
 
+echo "publication de l'extension sur $platform_name"
 
-echo "envoie de l'extension chrome à googleapis.com/upload/chromewebstore …"
-
-# {{{ chrome specific
+# {{{ platform specific
 # see https://github.com/pastak/chrome-webstore-manager
 webstore_token=$(chrome-webstore-manager refresh_token --client_id $GOOGLE_CLIENT_ID --client_secret $GOOGLE_CLIENT_SECRET --refresh_token $GOOGLE_REFRESH_TOKEN)
-
-webstore upload --source $FILE_NAME --extension-id $GOOGLE_APP_ID \
+webstore upload --source $filename_release_path --extension-id $GOOGLE_APP_ID \
    --client-id $GOOGLE_CLIENT_ID --client-secret $GOOGLE_CLIENT_SECRET \
    --refresh-token $webstore_token --autopublish
 
-# }}} chrome specific
+# }}} platform specific
 
 error=$?
 if [[ $error -ne 0 ]]; then
@@ -108,6 +154,8 @@ if [[ $error -ne 0 ]]; then
 	exit $error
 else
     echo "une nouvelle version de l'extension a été envoyée."
-    exit 0;
 fi
 
+if [[ $deleteFiles == true ]]; then
+    git checkout .
+fi
