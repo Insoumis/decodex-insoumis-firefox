@@ -122,11 +122,9 @@ function createLink(toDOM,url,title) {
 }
 
 function main() {
-	console && console.log('start main in popup.js');
     var background = browser.extension.getBackgroundPage();
 
     if(background.has_info == true) {
-            console && console.log("DEBUNKING …");
         // TODO afficher les infos manquantes avec popup.js et popup.html
         document.querySelector(".content #site-name").innerText = background.site_actif;
         document.querySelector("#notule").innerText = background.notule;
@@ -205,7 +203,12 @@ function main() {
 	//linkInNewTab(document.querySelector("#more-info-insoumis"));
 	
     for(var i=0;i<max_notes;i++){
-        document.querySelector("#alert"+i).style.color = background.color;
+        if (background.colors[i]) {
+            document.querySelector("#alert"+i).style.color = background.colors[i];
+        } else {
+            //console && console.log("oups");
+        }
+
     }
 }
 
