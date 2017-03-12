@@ -75,7 +75,7 @@ var browser = browser || chrome;
 
 var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
 if (_debug) {
-    console && console.warn("DEBUG LEVEL", _debug);
+    console && console.info("DEBUG LEVEL", _debug);
 }
 
 let col_note_decodex = 0;
@@ -138,7 +138,9 @@ let bandeau_msgs = [
     "Média Insoumis : Bravo !",
     "France Insoumise  \\o/"
 ];
-let colors = [
+
+// vars to show in prefs
+var colors = [
     "#A2A9AE", // gris
     "#D50303", // rouge
     "#F5A725", // jaune
@@ -278,8 +280,12 @@ function lastSlash(u){
 }
 
 
-function url_cleaner(u){
-    return u.replace("http://", "").replace('www.', "").replace("https://", "");
+function url_cleaner(url){
+    return url
+        .replace("http://", "")
+        .replace('www.', "")
+        .replace("https://", "")
+        .replace("\n", "");
 }
 
 function youtubeChannel(u){
@@ -527,13 +533,36 @@ function checkSite(do_display){
     // OTHER URLS
         else {
             matches = []
+
+            clean_url = url_cleaner(active_url);
+            find_url = urls[clean_url];
+            if (4 <= _debug) {
+                console && console.log("all urls", urls);
+                console && console.log("active_url",  active_url);
+                console && console.log("clean_url",   clean_url);
+                console && console.log("find_url urls[\""+clean_url+"\"]", urls[clean_url]);
+            }
+
+            if (find_url) {
+                matches.push(find_url);
+                console && console.warn("URL MATCHES !!!!", find_url);
+            }
+            else {
+                if (4 <= _debug) {
+                    console && console.group("for key in urls");
+                }
                 for (var key in urls) {
-                    if (_debug > 4) {
-                        console && console.warn("check key", key);
+                    if (!urls.hasOwnProperty(key)) {
+                        if (4 <= _debug) {
+                            console && console.info("this url «key» has not ownProperty", key);
+                        }
+                        continue;
                     }
-                    if (!urls.hasOwnProperty(key)) continue;
                     var index = active_url.indexOf(key);
                     if(index != -1) {
+                        if (4 <= _debug) {
+                            console && console.info("url FOUND !", key, index);
+                        }
                         if((
                             active_url.indexOf('http://www.'+ key) == 0
                             || active_url.indexOf('https://www.'+ key) == 0
@@ -551,13 +580,30 @@ function checkSite(do_display){
                         }
                     }
                 }
+                if (4 <= _debug) {
+                    console && console.groupEnd();
+                }
+            }
             tampon = "";
+            if (4 <= _debug) {
+                console && console.group("start foreach tampon");
+            }
             for(var url_i=0;url_i<matches.length;url_i++){
                 if(matches[url_i].length > tampon.length){
                     tampon = matches[url_i];
+                    if (4 <= _debug) {
+                        console && console.log("tampon is now", tampon);;
+                    }
                 }
             }
-            clean_url = tampon;
+            if (4 <= _debug) {
+                console && console.groupEnd();;
+                //clean_url = tampon;
+                console && console.log("call debunkSite");
+                console && console.log("clean_url", clean_url);
+                console && console.log("tab id",  tab.id);
+                console && console.log("do display", do_display);
+            }
             debunkSite(clean_url, tab.id, do_display);
         }
     });
