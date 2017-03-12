@@ -73,7 +73,7 @@
 
 var browser = browser || chrome;
 
-var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
+var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose, 4=even more. 5 very very verbose
 if (_debug) {
     console && console.info("DEBUG LEVEL", _debug);
 }
