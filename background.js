@@ -132,10 +132,10 @@ let icones = [
 ];
 let bandeau_msgs = [
     "Inconnu",
-    "Média carrément soumis !",
-    "Média plutôt soumis",
-    "Média plutôt insoumis",
-    "Média Insoumis : Bravo !",
+    "Lien capitalistique fort",
+    "Lien étatique fort",
+    "plutôt indépendant (vis à vis des intérets d'état et/ou de la finance)",
+    "Média indépendant (des états et de la finance)",
     "France Insoumise  \\o/"
 ];
 
