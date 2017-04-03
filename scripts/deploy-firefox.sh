@@ -70,7 +70,7 @@ opt_local=false
 opt_deploy=false
 
 # publish releases (works only if tags)
-opt_publish=false
+opt_publish=true
 
 # delete files (delete files to exclude them from package)
 opt_delete=false
