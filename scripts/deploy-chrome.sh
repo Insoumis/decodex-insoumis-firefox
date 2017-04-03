@@ -73,7 +73,7 @@ opt_deploy=false
 opt_publish=true
 
 # delete files (delete files to exclude them from package)
-opt_delete=false
+opt_delete=true
 filesToRemove="manifest-firefox.json manifest-chrome.json scripts/deploy-firefox.sh scripts/deploy-chrome.sh"
 
 opt_verbose=false
