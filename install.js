@@ -72,7 +72,7 @@
  */
 var browser = browser || chrome;
 
-var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
+//var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
 
 function bulleStore(e){
     var infobulles;
@@ -109,17 +109,17 @@ function main(){
     try {
         for(var i=0;i<6;i++){
             if(results.infobulles[i] == true){
-                document.getElementById("check-alert" + i).checked = true;
+                var selector = document.getElementById('check-alert' + i);
+                if (selector) {
+                    selector.checked = true;
+                }
             }
             else {
-                document.getElementById("check-alert" + i).checked = false;
+                var selector = document.getElementById('check-alert' + i);
+                if (selector) {
+                    selector.checked = true;
+                }
             }
-            console.log("error in install.js for infobulles, check-alert"+i);
-			// generait des erreurs
-			if (TODO) {
-				console && console.info("error in install.js for infobulles, check-alert"+i);
-				console && console.error(e);
-			}
         }
     } catch(e) {
         console && console.log("error in install.js for infobulles, check-alert"+i);
@@ -145,7 +145,9 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
         for(var i=0;i<6;i++){
             var selector = document.getElementById('check-alert' + i);
-            selector.addEventListener('click', bulleStore);
+            if (selector) {
+                selector.addEventListener('click', bulleStore);
+            }
         }
     } catch(e) {
         console && console.info("error in install.js for check-alert"+i);
