@@ -576,67 +576,65 @@ function checkSite(do_display){
                 console && console.log("find_url urls[\""+clean_url+"\"]", urls[clean_url]);
             }
 
+            // {{{ this might be removed (redundant with after the for()
             if (find_url) {
                 matches.push(find_url);
                 if (4 <= _debug) {
-                    console && console.warn("URL MATCHES !!!!", find_url);
+                    console && console.warn("URL MATCHES !!!! (clean_url="+clean_url+")", find_url);
                 }
             }
-            else {
-                if (4 <= _debug) {
-                    console && console.group("for key in urls");
-                }
+            // }}} this might be removed (redundant with after the for()
 
-                for (var key in urls) {
-                    if (!urls.hasOwnProperty(key)) {
-                        if (4 <= _debug) {
-                            console && console.info("this url «key» has not ownProperty", key);
-                        }
-                        continue;
-                    }
-                    var index = active_url.indexOf(key);
-                    if(index != -1) {
-                        if (4 <= _debug) {
-                            console && console.info("url FOUND !", key, index);
-                        }
-                        if((
-                            active_url.indexOf('http://www.'+ key) == 0
-                            || active_url.indexOf('https://www.'+ key) == 0
-                            || active_url.indexOf('http://'+ key) == 0
-                            || active_url.indexOf('https://'+ key) == 0
-                        )
-                            && index != 0
-                            && (active_url[index-1] == "/" || active_url[index-1] == ".")
-                            && key != "facebook.com"
-                            && key != "twitter.com") {
-                            matches.push(key);
-                            if (_debug > 4) {
-                                console && console.warn("URL MATCHES !!!!");
-                                //break;
-                            }
-                        }
-                    }
-                }
+            if (4 <= _debug) {
+                console && console.group("for key in urls");
+            }
 
-                if (4 <= _debug) {
-                    console && console.groupEnd();
+            for (var key in urls) {
+                if (!urls.hasOwnProperty(key)) {
+                    if (4 <= _debug) {
+                        console && console.info("this url «key» has not ownProperty", key);
+                    }
+                    continue;
                 }
+                var index = active_url.indexOf(key);
+                if(index != -1) {
+                    if (4 <= _debug) {
+                        console && console.info("url FOUND !", key, index);
+                    }
+                    if((
+                        active_url.indexOf('http://www.'+ key) == 0
+                        || active_url.indexOf('https://www.'+ key) == 0
+                        || active_url.indexOf('http://'+ key) == 0
+                        || active_url.indexOf('https://'+ key) == 0
+                    )
+                        && index != 0
+                        && (active_url[index-1] == "/" || active_url[index-1] == ".")
+                        && key != "facebook.com"
+                        && key != "twitter.com") {
+                        // current active_url contains the current url from
+                        // the loop (key)
+                        matches.push(key);
+                        if (_debug > 4) {
+                            console && console.warn("URL MATCHES !!!!");
+                        }
+                    }
+                }
+            }
+
+            if (4 <= _debug) {
+                console && console.groupEnd();
             }
             tampon = "";
-            if (4 <= _debug) {
-                console && console.group("start foreach tampon");
-            }
             for(var url_i=0;url_i<matches.length;url_i++){
                 if(matches[url_i].length > tampon.length){
                     tampon = matches[url_i];
                     if (4 <= _debug) {
-                        console && console.log("tampon is now", tampon);;
+                        console && console.log("tampon update to use longer url :", tampon);
                     }
                 }
             }
+            clean_url = tampon; // this contains the longest url match
             if (4 <= _debug) {
-                console && console.groupEnd();;
-                //clean_url = tampon;
                 console && console.log("call debunkSite");
                 console && console.log("clean_url", clean_url);
                 console && console.log("tab id",  tab.id);
@@ -649,26 +647,45 @@ function checkSite(do_display){
 
 
 browser.tabs.onActivated.addListener(function (tabId, tab) {
+    if (4 <= _debug) {
+        console && console.log("listener onActivated");
+    }
     checkSite(false);
 });
 
 browser.windows.getCurrent(function (tabId, tab) {
+    if (4 <= _debug) {
+        console && console.log("windows.getCurrent");
+    }
     checkSite(false);
 });
 
-browser.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    checkSite(changeInfo.status && changeInfo.status == "complete");
-});
+// This event happens everytime and is probably not required
+//browser.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+//    //if (4 <= _debug) {
+//    //    console && console.log("onUpdated");
+//    //}
+//    //checkSite(changeInfo.status && (changeInfo.status == "complete"));
+//});
 
 browser.windows.onFocusChanged.addListener(function (tabId, tab) {
+    if (4 <= _debug) {
+        console && console.log("onFocusChanged");
+    }
     checkSite(false);
 });
 
 
 browser.browserAction.onClicked.addListener(function (tabId, tab) {
+    if (4 <= _debug) {
+        console && console.log("onClicked");
+    }
     checkSite(false);
 });
 
 browser.tabs.onCreated.addListener(function (tabId, tab) {
+    if (4 <= _debug) {
+        console && console.log("onCreated");
+    }
     checkSite(true);
 });
