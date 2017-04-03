@@ -292,7 +292,7 @@ else
     einfo "$filesToRemove"
 fi
 
-if $opt_publish; then
+if [[ false == $opt_publish ]]; then
     einfo "option --publish missing."
     exit 0
 fi
