@@ -260,16 +260,20 @@ if [[ ! -d build ]]; then
 fi
 
 # {{{ platform specific -- prepare to publish
+if $opt_delete; then
+    einfo "delete some files before web-ext lint"
+    if [[ -n "$filesToRemove" ]]; then
+        ewarn "TODO: ignore file instead of delete them"
+        git clean -f -d *
+        rm ${filesToRemove}
+    fi
+fi
 web-ext lint --ignore-files=scripts/deploy-firefox.sh scripts/deploy-chrome.sh manifest-firefox.json manifest-chrome.json build
 
 if [[ false == $opt_publish ]]; then
     # todo: no need to ignore-files if not publish
     echo "TODO: ignore file here"
 fi
-
-echo "TODO: ignore file instead of delete them"
-git clean -f -d *
-rm scripts/deploy-firefox.sh scripts/deploy-chrome.sh
 
 web-ext build \
     --ignore-files=scripts/deploy-firefox.sh scripts/deploy-chrome.sh manifest-firefox.json manifest-chrome.json build \
@@ -288,9 +292,10 @@ mv build/${file_prefix}-${version}.zip $filename_release_path
 # }}} platform specific
 
 if $opt_delete; then
-    edebug "DO NOT DELETE"
-    exit 2
+    edebug "opt_delete found"
     if [[ -n "$filesToRemove" ]]; then
+        ewarn "deleting ${filesToRemove} is required for mozilla"
+        git clean -f -d *
         rm ${filesToRemove}
     fi
 else

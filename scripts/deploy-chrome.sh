@@ -282,9 +282,10 @@ fi
 # }}} platform specific
 
 if $opt_delete; then
-    edebug "DO NOT DELETE"
-    exit 2
+    edebug "opt_delete found"
     if [[ -n "$filesToRemove" ]]; then
+        ewarn "deleting ${filesToRemove} is not really required for google"
+        #git clean -f -d *
         rm ${filesToRemove}
     fi
 else
