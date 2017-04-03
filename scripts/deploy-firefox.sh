@@ -264,6 +264,7 @@ web-ext lint --ignore-files=scripts/deploy-firefox.sh scripts/deploy-chrome.sh m
 
 if [[ false == $opt_publish ]]; then
     # todo: no need to ignore-files if not publish
+    rm scripts/deploy-firefox.sh scripts/deploy-chrome.sh
     echo "TODO: ignore file"
 fi
 
