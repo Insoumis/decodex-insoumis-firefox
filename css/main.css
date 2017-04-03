@@ -237,3 +237,17 @@ footer {
     font-weight: normal;
     margin : 2px;
 }
+
+
+#owner-msg{
+}
+#proprietaires{
+}
+
+.table-popup-insoumis {
+    border-collapse: collapse;
+    border : 1px solid black;
+}
+.table-popup-insoumis td{
+    border : 1px solid black;
+}

@@ -131,6 +131,7 @@ function main() {
         document.querySelector("#our-opinion").style["color"] = background.color;
         document.querySelector("#our-opinion").innerText = background.message;
 
+
         if(background.decodex_note) {
             document.querySelector("#les-decodeurs #comment").innerText = "Les Décodeurs du Monde jugent eux ce site comme ";
             document.querySelector("#les-decodeurs #description").style["color"] = background.decodex_color;
@@ -141,10 +142,29 @@ function main() {
             document.querySelector("#les-decodeurs").innerText = "Les Décodeurs du Monde ne connaissent pas ce site";
         }
 
-        document.querySelector("#proprietaires span.content").innerText = background.proprietaires.join(",");
-        document.querySelector("#fortunes span.content").innerText = background.fortunes.join(",");
-        document.querySelector("#brands span.content").innerText = background.marques.join(",");
-        document.querySelector("#influences span.content").innerText = background.influences.join(",");
+        document.querySelector("#owner-msg").innerText = background.owner_msg;
+        //document.querySelector("#proprietaires span.content").innerText = background.proprietaires.join(",");
+
+            console && console.group("la boucle proprietaire : ");
+            console && console.log(background.proprietaires);
+        for(var i in background.proprietaires) {
+            console && console.log("proprietaire "+i);
+            if (background.proprietaires[i]) {
+                document.querySelector("#proprietaire"+i+" td.nom").innerText = background.proprietaires[i]
+                document.querySelector("#proprietaire"+i+" td.detail").innerText =
+                    background.fortunes[i]
+                    background.marques[i]
+                    += background.influences[i];
+                document.querySelector("#proprietaire"+i).style = "";
+            } else {
+                document.querySelector("#proprietaire"+i).style = "display:none";
+            }
+        }
+            console && console.groupEnd();
+
+        //document.querySelector("#fortunes span.content").innerText = background.fortunes.join(",");
+        //document.querySelector("#brands span.content").innerText = background.marques.join(",");
+        //document.querySelector("#influences span.content").innerText = background.influences.join(",");
 
 
         //document.querySelector("#interests span.content").innerText = background.interets;
@@ -190,13 +210,16 @@ function main() {
     });
     browser.storage.local.get('infobulles', function(results){
         for(var i=0;i<max_notes;i++){
+            var thisCheckbox = document.getElementById("check-alert"+i);
+            if (thisCheckbox) {
                 if(results.infobulles[i] == true){
-                    document.getElementById("check-alert" + i).checked = true;
+                    thisCheckbox.checked = true;
                 }
                 else {
-                    document.getElementById("check-alert" + i).checked = false;
+                    thisCheckbox.checked = false;
                 }
             }
+        }
     });
 	
 	//linkInNewTab(document.querySelector(".propos-par a"));
@@ -204,7 +227,10 @@ function main() {
 	
     for(var i=0;i<max_notes;i++){
         if (background.colors[i]) {
-            document.querySelector("#alert"+i).style.color = background.colors[i];
+            var thisalert = document.querySelector("#alert"+i);
+            if (thisalert) {
+                thisalert.style.color = background.colors[i];
+            }
         } else {
             //console && console.log("oups");
         }
@@ -215,7 +241,10 @@ function main() {
 document.addEventListener('DOMContentLoaded', function () {
     main();
     for(var i=0;i<max_notes;i++){
-        document.querySelector('#check-alert'+i).addEventListener('click', bulleStore);
+            var thisCheckbox = document.querySelector("#check-alert"+i);
+            if (thisCheckbox) {
+                thisCheckbox.addEventListener('click', bulleStore);
+            }
     }
     document.querySelector('#do-refresh-database').addEventListener('click', refreshDatabase);
 });

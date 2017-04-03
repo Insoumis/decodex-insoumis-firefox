@@ -173,7 +173,7 @@ var browser = browser || chrome;
 
             // Ajout du style
             var forceImportant = true;
-            //var currentColor = colors[soumission]; // note
+            //var currentColor = colors[insoumis_note]; // note
             var currentColor = request.color; // note
 
             var reset = {

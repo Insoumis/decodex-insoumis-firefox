@@ -13,15 +13,24 @@
         </header>
         <div class="content" id="decodex-insoumis-window">
             <h2 id="site-name"></h2>
+            <table class="table-popup-insoumis">
+                <tr><td colspan="2">
+                        <p id="les-decodeurs"><span id="comment"></span><span id="description"></span>.</p>
+                </td></tr>
+                <tr><td colspan="2">
+                        <p id="owner-msg"></p>
+                </td></tr>
+                <tr id="proprietaire0"> <td class="nom"></td> <td class="detail"></td> </tr>
+                <tr id="proprietaire1"> <td class="nom"></td> <td class="detail"></td> </tr>
+                <tr id="proprietaire2"> <td class="nom"></td> <td class="detail"></td> </tr>
+            </table>
             <p id="notule"></p>
-            <h2>Ce site est-il fiable ?</h2>
             <p id="our-opinion" class="our-opinion"></p>
-            <p id="les-decodeurs"><span id="comment"></span><span id="description"></span>.</p>
             <!-- @TODO: le design. Faire plus tableau ? -->
-            <div id="proprietaires"><span class="label">Propriétaires : </span><span class="content"></span></div>
-            <div id="fortunes"><span class="label">Fortunes : </span><span class="content"></span></div>
-            <div id="brands"><span class="label">Marques : </span><span class="content"></span></div>
-            <div id="influences"><span class="label">Influences : </span><span class="content"></span></div>
+            <!-- <div id="fortunes"><span class="label">Fortunes : </span><span class="content"></span></div>          -->
+            <!-- <div id="proprietaires"><span class="label">Propriétaires : </span><span class="content"></span></div>-->
+            <!-- <div id="brands"><span class="label">Marques : </span><span class="content"></span></div>             -->
+            <!-- <div id="influences"><span class="label">Influences : </span><span class="content"></span></div>      -->
 
             <!--<div id="interests"><span class="label">Intérêts : </span><span class="content"></span></div>              -->
             <!--<div id="conflicts"><span class="label">Exemples de conflit d'intérêts : </span><span class="content"></span></div>-->
@@ -53,23 +62,25 @@
                 </div>
                 <div id="alert1" class="option-bulle">
                     <input id="check-alert1" type="checkbox">
-                    <label for="check-alert1">Média carrément soumis !</label><br>
+                    <label for="check-alert1">Liens capitalistiques fort</label><br>
                 </div>
                 <div id="alert2" class="option-bulle">
                     <input id="check-alert2" type="checkbox">
-                    <label for="check-alert2">Média plutôt soumis</label><br>
+                    <label for="check-alert2">Liens étatiques forts</label><br>
                 </div>
+                <!--
                 <div id="alert3" class="option-bulle">
                     <input id="check-alert3" type="checkbox">
                     <label for="check-alert3">Média plutôt insoumis</label><br>
                 </div>
+                -->
                 <div id="alert4" class="option-bulle">
                     <input id="check-alert4" type="checkbox">
-                    <label for="check-alert4">Média Insoumis : Bravo !</label>
+                    <label for="check-alert4">Média indépendant: Bravo !</label>
                 </div>
                 <div id="alert5" class="option-bulle">
                     <input id="check-alert5" type="checkbox">
-                    <label for="check-alert5">France Insoumise</label>
+                    <label for="check-alert5">France Insoumise (pas d'ambiguité !)</label>
                 </div>
         </div>
         <div class="content" id="verif-insoumis">

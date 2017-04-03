@@ -72,7 +72,7 @@
  */
 var browser = browser || chrome;
 
-var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
+//var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
 
 function bulleStore(e){
     var infobulles;

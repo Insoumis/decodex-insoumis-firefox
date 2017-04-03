@@ -78,14 +78,14 @@ if (_debug) {
     console && console.info("DEBUG LEVEL", _debug);
 }
 
-let col_note_decodex = 0;
-let col_desc         = 1;
-let col_nom          = 2;
-let col_slug         = 3;
-let col_soumission   = 4;
-let col_pub          = 5;
-let col_subventions  = 6;
-let col_sources      = 7;
+let col_note_decodex  = 0;
+let col_desc          = 1;
+let col_nom           = 2;
+let col_slug          = 3;
+let col_note_insoumis = 4;
+let col_pub           = 5;
+let col_subventions   = 6;
+let col_sources       = 7;
 
 let col_proprietaire1 =  8;
 let col_fortune1      =  9;
@@ -104,15 +104,19 @@ let col_influence3    = 19;
 
 let messages = [
     // gris
-    "Nous n'avons pas encore évalué ce média selon nos critères, ou nous n'avons pas pu trouver d'information suffisamment fiable pour l'indiquer.",
+    //"Nous n'avons pas encore évalué ce média selon nos critères, ou nous n'avons pas pu trouver d'information suffisamment fiable pour l'indiquer.",
+    "non classé",
     // rouge
-    "Selon les critères retenus, ce média n'est pas indépendant. Cette catégorie regroupe les médias appartenant a de grands groupes industriels ou puissance financières qui peuvent influencer le traitement de l'information ou la ligne éditoriale. Quoi qu'il en soit, nous vous conseillons de chercher une ou plusieurs source alternative à l'information que vous lisez, voir opposée, en particulier si cette presse confirme vos idées.en particulier si cette presse confirme vos idées.",
+    //"Selon les critères retenus, ce média n'est pas indépendant. Cette catégorie regroupe les médias appartenant a de grands groupes industriels ou puissance financières qui peuvent influencer le traitement de l'information ou la ligne éditoriale. Quoi qu'il en soit, nous vous conseillons de chercher une ou plusieurs source alternative à l'information que vous lisez, voir opposée, en particulier si cette presse confirme vos idées.en particulier si cette presse confirme vos idées.",
+    "Ce média est contrôlé par des puissances financières.",
     // jaune
-    "Selon les critères retenus, ce média n'est pas vraiment indépendant. Cette catégorie regroupe les médias gérés par l'état français ou un état étranger. Ce type de média est en général moins soumis aux sphères financières, mais cela ne veut pas dire qu'il ne faut pas chercher une ou plusieurs source alternative à l'information que vous lisez, en particulier si cette presse confirme la version officielle de l'état concerné.",
+    "Ce média est contrôlé par un ou plusieurs états",
+    //"Selon les critères retenus, ce média n'est pas vraiment indépendant. Cette catégorie regroupe les médias gérés par l'état français ou un état étranger. Ce type de média est en général moins soumis aux sphères financières, mais cela ne veut pas dire qu'il ne faut pas chercher une ou plusieurs source alternative à l'information que vous lisez, en particulier si cette presse confirme la version officielle de l'état concerné.",
     // bleu
     "????",
     // vert
-    "Selon les critères retenus, ce média est insoumis, indépendant ! Il appartient en majorité à ses rédacteurs (et/ou abonnés) et ne fait pas ou très peu de recettes publicitaires ! Ces médias bénéficient en général d'assez peu de subventions publicitaires. L'indépendance éditoriale est nécessaire pour une information de qualité. Merci à eux, et merci à vous de les lire ! N'hésitez pas à comparer le traitement de l'information qu'en fait un autre média, plus soumis à l'oligarchie ou au capital… vous pourriez être surpris !",
+    "Indépendant des états et des marchés financiers",
+    //"Selon les critères retenus, ce média est insoumis, indépendant ! Il appartient en majorité à ses rédacteurs (et/ou abonnés) et ne fait pas ou très peu de recettes publicitaires ! Ces médias bénéficient en général d'assez peu de subventions publicitaires. L'indépendance éditoriale est nécessaire pour une information de qualité. Merci à eux, et merci à vous de les lire ! N'hésitez pas à comparer le traitement de l'information qu'en fait un autre média, plus soumis à l'oligarchie ou au capital… vous pourriez être surpris !",
     // insoumis !
     "Hé hé, on va pas vous mentir hein : Vous êtes sur un site clairement partisan des Insoumis ! Donc de notre point de vue, c'est un chouette site, vous pouvez lire tout ce que vous y trouvez, et comparer les informations avec des sites un peu plus soumis à l'oligarchie pour voir la différence de traitement !"
 ];
@@ -130,13 +134,23 @@ let icones = [
     // vert
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAIQSURBVHjapNQ/aJ5VFMfxz5O8pi84OWTQwT9BKygkirQigkOGInETarG2IOUGbApxaZdsXasdaocgvNgWghBEUbpk0cUQsKgFOyiU0hZKtbSWgMs1jb0u54WbxzdvBu9ynvvnfM/v3vOc05RSDBrdXjOJA5jGU7iM93Mqdw0ZnQGgXTiFDzBWbT2OV7AyDNjUCru95lEs461Y+h3jEfgWXgzFhzCB+zifU1naDngG8zH9GN/jG2zibbyB4wOEzedUzm4BdnvNFH4MNYs5lblurxnFsXi/N7EQgEV8i4MR6G/syalcGamiHK6utgA5lX9yKp/gBk7EudM5lbmcypd4Fz9jV7y5Gvh62K9zKuvtK+ER3MbJ/mJOZQOf1/41cCLsb62sdzBTBfurFex62CfawNGwD1oOz+C5+P5qQEL6fqUN/KP63+rxclx3Hb8MAO6u/WvgatiZlsOe6mr3Ws8xiv0xvdQGLoXsvd1eM1utPx32Wk7/qdM5TOEhzm0B5lRWo0rgbLfXvBPf431gS917+KgvJqeyNqiW5/ECJrHc7TX78Gzs/dntNWN4DUejccAP+HBg6UXkJ0P+dCvYTWQ8X61dxGxO5c62wOqxj4SSl9BU2xv4CZ/mVC4M7TYDwB2sRaa/wGeRnKvb+YwM6205lc2qEjZzKivDYDsCY/wa9tVIiv8L/C4aaQeP7XT43wEAbqCsQF3eczAAAAAASUVORK5CYII="
 ];
+
 let bandeau_msgs = [
     "Inconnu",
-    "Lien capitalistique fort",
-    "Lien étatique fort",
+    "Liens capitalistiques forts",
+    "Liens étatiques fort",
     "plutôt indépendant (vis à vis des intérets d'état et/ou de la finance)",
     "Média indépendant (des états et de la finance)",
     "France Insoumise  \\o/"
+];
+
+let owner_msgs = [
+    "Ce site n'est pas référencé dans notre base de données.",
+    "Voici les liens capitalistiques avec les principaux actionnaires du média que vous consultez :",
+    "Ce média est la propriété du ou des états suivants :",
+    "plutôt indépendant (vis à vis des intérets d'état et/ou de la finance)",
+    "Ce site n'a pas de lien capitalistique ou étatique.",
+    "L'Avenir en Commun est un programme qui a été rédigé par plus de 3 000 bénévoles, il contient 357 propositions qui ont toutes été amendées"
 ];
 
 // vars to show in prefs
@@ -159,11 +173,13 @@ var base_url = "http://decodex.insoumis.online/database.json";
 var always_refresh = false;
 var urls = "";
 var note = null;
-var soumission = null;
+var insoumis_note = null;
 var notule = ""
 var active_url = "";
 var has_info = false;
 var clean_url = "";
+
+var owner_msg = '';
 
 var proprietaires = '';
 var fortunes      = '';
@@ -269,8 +285,17 @@ function loadData(){
     });
 }
 
+function removeAfterLastSlash(u){
+    if(u.lastIndexOf('/') !== -1) {
+        return u.substring(0, u.lastIndexOf('/'));
+    }
+    else {
+        return u;
+    }
+}
 
-function lastSlash(u){
+
+function lastSlash(u){ // remove the last slash at the end of the string
     if(u.lastIndexOf('/') == u.length-1) {
         return u.substring(0, u.length-1);
     }
@@ -300,8 +325,9 @@ function youtubeChannel(u){
 
 
 function debunkSite(u, t, d){
-    if (3 <= _debug)
-        console && console.log('debunk site ', u);
+    if (3 <= _debug) {
+        console && console.group('STARRT debunk site '+u);
+    }
 
     browser.storage.local.get(['urls', "sites", "already_visited", "infobulles", "last_update"], function(results){
         if (3 <= _debug) {
@@ -317,6 +343,7 @@ function debunkSite(u, t, d){
                 urls = results.urls;
                 sites = results.sites;
                 has_info = urls.hasOwnProperty(u);
+                // si le site est trouvé direct
                 if (has_info == true) {
                     site_id = urls[u];
                     if (2 <= _debug) {
@@ -325,9 +352,11 @@ function debunkSite(u, t, d){
                     try {
                         site_actif     = sites[site_id][col_nom];                    // nom du site
                         decodex_note   = parseInt(sites[site_id][col_note_decodex]); // note decodex
-                        soumission     = parseInt(sites[site_id][col_soumission]);   // note insoumis
+                        insoumis_note     = parseInt(sites[site_id][col_note_insoumis]);   // note insoumis
                         notule         = sites[site_id][col_desc];                   // description originale
                         slug           = sites[site_id][col_slug];                   // nom normalisé
+
+                        owner_msg      = owner_msgs[insoumis_note];               // message "ce media est la propriété ..."
 
                         var proprietaire1 = sites[site_id][col_proprietaire1];      // propriétaires
                         var fortunes1      = sites[site_id][col_fortune1     ];      // propriétaires
@@ -386,19 +415,19 @@ function debunkSite(u, t, d){
                             console && console.log("sources apres urls simples", sources);
                         }
 
-                        note          = soumission;
-                        color         = colors[soumission];
-                        message       = messages[soumission];
+                        note          = insoumis_note;
+                        color         = colors[insoumis_note];
+                        message       = messages[insoumis_note];
                         decodex_color = decodex_colors[decodex_note];
                         decodex_desc  = decodex_descs[decodex_note];
-                        bandeau_msg   = bandeau_msgs[soumission];
-                        icone         = icones[soumission];
+                        bandeau_msg   = bandeau_msgs[insoumis_note];
+                        icone         = icones[insoumis_note];
 
                         if (2 <= _debug) {
                             console && console.group("tout s'est bien passé");
                             console && console.log('site_actif     =',site_actif     );
                             console && console.log('decodex_note   =',decodex_note   );
-                            console && console.log('soumission     =',soumission     );
+                            console && console.log('insoumis_note  =',insoumis_note );
                             console && console.log('notule         =',notule         );
                             console && console.log('slug           =',slug           );
                             console && console.log('proprietaires  =',proprietaires  );
@@ -418,20 +447,20 @@ function debunkSite(u, t, d){
                     }
 
                     browser.browserAction.setIcon({
-                        path: "img/icones/icon" + (soumission) + ".png", // note
+                        path: "img/icones/icon" + (insoumis_note) + ".png", // note
                         tabId: t
                     });
 
-                    if(results.infobulles[soumission] == true && d == true){  // note
+                    if(results.infobulles[insoumis_note] == true && d == true){  // note
                         browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
                             // sendMessage to the content.js listener
                             browser.tabs.sendMessage(tabs[0].id, {
                                 show_popup  : true,
-                                note        : soumission,
-                                color       : colors[soumission],
-                                message     : messages[soumission],
-                                bandeau_msg : bandeau_msgs[soumission],
-                                icone       : icones[soumission],
+                                note        : insoumis_note,
+                                color       : colors[insoumis_note],
+                                message     : messages[insoumis_note],
+                                bandeau_msg : bandeau_msgs[insoumis_note],
+                                icone       : icones[insoumis_note],
                             }, function(response) { // note
                             });
                         });
@@ -453,11 +482,11 @@ function debunkSite(u, t, d){
 
                 if (u.match(/youtube.com/)) {
 
-                    if (null == soumission)
-                        soumission  = 0;                             // propriétaires
+                    if (null == insoumis_note)
+                        insoumis_note  = 0;                             // propriétaires
 
                     browser.browserAction.setIcon({
-                        path: "img/icones/icon" + (soumission) + ".png", // note
+                        path: "img/icones/icon" + (insoumis_note) + ".png", // note
                         tabId: t
                     });
 
@@ -490,6 +519,9 @@ function debunkSite(u, t, d){
             }
         }
     });
+    if (3 <= _debug) {
+        console && console.groupEnd();
+    }
 }
 
 
@@ -528,12 +560,13 @@ function checkSite(do_display){
         // SOCIAL NETWORKS HOMEPAGE
         else if(active_url == 'https://www.facebook.com' || active_url == 'https://twitter.com' || active_url == 'https://www.youtube.com'){
             clean_url = url_cleaner(active_url);
-        debunkSite(clean_url, tab.id, do_display);
-    }
-    // OTHER URLS
+            debunkSite(clean_url, tab.id, do_display);
+        }
+        // OTHER URLS
         else {
             matches = []
 
+            // @TODO: recursiv last slash
             clean_url = url_cleaner(active_url);
             find_url = urls[clean_url];
             if (4 <= _debug) {
@@ -545,12 +578,15 @@ function checkSite(do_display){
 
             if (find_url) {
                 matches.push(find_url);
-                console && console.warn("URL MATCHES !!!!", find_url);
+                if (4 <= _debug) {
+                    console && console.warn("URL MATCHES !!!!", find_url);
+                }
             }
             else {
                 if (4 <= _debug) {
                     console && console.group("for key in urls");
                 }
+
                 for (var key in urls) {
                     if (!urls.hasOwnProperty(key)) {
                         if (4 <= _debug) {
@@ -568,18 +604,20 @@ function checkSite(do_display){
                             || active_url.indexOf('https://www.'+ key) == 0
                             || active_url.indexOf('http://'+ key) == 0
                             || active_url.indexOf('https://'+ key) == 0
-                           )
-                           && index != 0
-                           && (active_url[index-1] == "/" || active_url[index-1] == ".")
-                           && key != "facebook.com"
-                           && key != "twitter.com") {
+                        )
+                            && index != 0
+                            && (active_url[index-1] == "/" || active_url[index-1] == ".")
+                            && key != "facebook.com"
+                            && key != "twitter.com") {
                             matches.push(key);
                             if (_debug > 4) {
                                 console && console.warn("URL MATCHES !!!!");
+                                //break;
                             }
                         }
                     }
                 }
+
                 if (4 <= _debug) {
                     console && console.groupEnd();
                 }
