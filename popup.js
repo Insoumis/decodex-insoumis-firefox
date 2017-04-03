@@ -149,16 +149,23 @@ function main() {
             console && console.log(background.proprietaires);
         for(var i in background.proprietaires) {
             console && console.log("proprietaire "+i);
-            if (background.proprietaires[i]) {
+            if (!background.proprietaires[i]) {
+                document.querySelector("#proprietaire"+i).style = "display:none";
+            } else {
+                document.querySelector("#proprietaire"+i).style = "";
                 document.querySelector("#proprietaire"+i+" td.nom").innerText = background.proprietaires[i]
+            }
+
+            if (!background.fortunes[i]) {
+                document.querySelector("#proprietaire"+i+" td.detail").style = "display:none";
+            } else {
                 document.querySelector("#proprietaire"+i+" td.detail").innerText =
                     background.fortunes[i]
-                    background.marques[i]
-                    += background.influences[i];
-                document.querySelector("#proprietaire"+i).style = "";
-            } else {
-                document.querySelector("#proprietaire"+i).style = "display:none";
+                    + background.marques[i]
+                    + background.influences[i];
+                document.querySelector("#proprietaire"+i+" td.detail").style = "";
             }
+
         }
             console && console.groupEnd();
 
