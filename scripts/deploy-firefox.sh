@@ -268,6 +268,7 @@ if [[ false == $opt_publish ]]; then
 fi
 
 echo "TODO: ignore file instead of delete them"
+git clean -f -d *
 rm scripts/deploy-firefox.sh scripts/deploy-chrome.sh
 
 web-ext build \
