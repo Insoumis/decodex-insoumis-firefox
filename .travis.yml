@@ -17,8 +17,8 @@ install:
 script : git describe --always
 
 before_deploy:
-  - scripts/deploy-firefox.sh --publish
   - scripts/deploy-chrome.sh --publish
+  - scripts/deploy-firefox.sh --publish
   - export RELEASE_PKG_FILE=$(ls build/*)
   - echo "deploying $RELEASE_PKG_FILE to GitHub releases"
 

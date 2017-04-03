@@ -295,7 +295,7 @@ if $opt_delete; then
     edebug "opt_delete found"
     if [[ -n "$filesToRemove" ]]; then
         ewarn "deleting ${filesToRemove} is required for mozilla"
-        git clean -f -d *
+        #git clean -f -d *
         rm ${filesToRemove}
     fi
 else
@@ -335,7 +335,5 @@ else
     eok "une nouvelle version de l'extension a été envoyée."
 fi
 
-if $opt_delete; then
-    ewarn "restore repository"
-    git checkout .
-fi
+ewarn "restore repository"
+git checkout .

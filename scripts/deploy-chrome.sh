@@ -325,7 +325,5 @@ else
     eok "une nouvelle version de l'extension a été envoyée."
 fi
 
-if $opt_delete; then
-    ewarn "restore repository"
-    git checkout .
-fi
+ewarn "restore repository"
+git checkout .
