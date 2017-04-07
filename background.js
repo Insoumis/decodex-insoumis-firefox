@@ -660,13 +660,14 @@ browser.windows.getCurrent(function (tabId, tab) {
     checkSite(false);
 });
 
-// This event happens everytime and is probably not required
-//browser.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-//    //if (4 <= _debug) {
-//    //    console && console.log("onUpdated");
-//    //}
-//    //checkSite(changeInfo.status && (changeInfo.status == "complete"));
-//});
+// This event happens everytime but seems required to update logo color
+// onload
+browser.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    //if (4 <= _debug) {
+    //    console && console.log("onUpdated");
+    //}
+    checkSite(changeInfo.status && (changeInfo.status == "complete"));
+});
 
 browser.windows.onFocusChanged.addListener(function (tabId, tab) {
     if (4 <= _debug) {
@@ -674,7 +675,6 @@ browser.windows.onFocusChanged.addListener(function (tabId, tab) {
     }
     checkSite(false);
 });
-
 
 browser.browserAction.onClicked.addListener(function (tabId, tab) {
     if (4 <= _debug) {

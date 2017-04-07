@@ -72,8 +72,6 @@
  */
 var browser = browser || chrome;
 
-//var _debug = 0; // 0=quiet, 1=verbose, 2=more verbose, 3= very very verbose
-
 function bulleStore(e){
     var infobulles;
     var infobulles_once;
@@ -108,15 +106,12 @@ function main(){
 
     try {
         for(var i=0;i<6;i++){
-            if(results.infobulles[i] == true){
-                var selector = document.getElementById('check-alert' + i);
-                if (selector) {
+            var selector = document.getElementById('check-alert' + i);
+            if (selector) {
+                if(results.infobulles[i] == true){
                     selector.checked = true;
                 }
-            }
-            else {
-                var selector = document.getElementById('check-alert' + i);
-                if (selector) {
+                else {
                     selector.checked = true;
                 }
             }
@@ -129,19 +124,6 @@ function main(){
     });
 }
 document.addEventListener('DOMContentLoaded', function () {
-    try {
-        for(var i=0;i<6;i++){
-            var selector = document.getElementById('check-alert' + i);
-            selector.addEventListener('click', bulleStore);
-        }
-    } catch(e) {
-        // generait des erreurs
-        if (0) {
-            console && console.info("error in install.js for check-alert"+i);
-            console && console.error(e);
-        }
-    }
-
     try {
         for(var i=0;i<6;i++){
             var selector = document.getElementById('check-alert' + i);

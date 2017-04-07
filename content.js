@@ -81,9 +81,6 @@ var browser = browser || chrome;
 
     var heights = [213, 180, 212, 203, 213];
 
-    var class_colors = ["not-a-source", "satirical", "complotist", "dubious", "trusted", "trusted"]
-
-
     // Helpers function
     function closeInfoBulle(){
         clearTimeout(removeTimeout);
