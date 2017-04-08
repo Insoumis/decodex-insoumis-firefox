@@ -146,19 +146,6 @@ a.more:after, .button.more:after{
 	overflow: hidden; /* clearfix */
 }
 
-form{
-	display: block;
-	max-width: 280px;
-	overflow: hidden;
-}
-
-form h4{
-	margin-left: 50%;
-	margin-top: 1em;
-	margin-bottom: .5em;
-	width: 50%;
-	text-align: center;
-}
 
 label{
 	font-size: .875em;
@@ -310,4 +297,42 @@ label{
 	}
 
 	.m-display-block{ display: block; }
+}
+
+
+.option-bulle {
+}
+#alert0{
+    font-weight:bold;
+    color : #A2A9AE;  /* gris */
+}
+#alert1{
+    font-weight:bold;
+    color : #D50303;  /* rouge */
+}
+#alert2{
+    font-weight:bold;
+    color : #F5A725;  /* jaune */
+}
+#alert3{
+    font-weight:bold;
+    color : #129AF0;  /* bleu */
+}
+#alert4{
+    font-weight:bold;
+    color : #468847;  /* vert */
+}
+#alert5{
+    font-weight:bold;
+    color : #468847;  /* INSOUMIS AUSSI :D */
+}
+#alert6{
+}
+
+figure {
+    background-color : #eee;
+    padding : 8px;
+}
+figcaption {
+    font-size:small;
 }

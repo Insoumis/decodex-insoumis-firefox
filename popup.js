@@ -153,7 +153,7 @@ function main() {
                 document.querySelector("#proprietaire"+i).style = "display:none";
             } else {
                 document.querySelector("#proprietaire"+i).style = "";
-                document.querySelector("#proprietaire"+i+" td.nom").innerText = background.proprietaires[i]
+                document.querySelector("#proprietaire"+i+" .nom").innerText = background.proprietaires[i]
             }
 
             if (!background.fortunes[i]) {
@@ -178,12 +178,18 @@ function main() {
         //document.querySelector("#conflicts span.content").innerText = background.conflits;
         //document.querySelector("#subsidies span.content").innerText = background.subventions;
 
-		var par = document.querySelector("#sources span.content"); par.innerText = "";
-        for(var i in background.sources) {
-			var obj = background.sources[i];
-			createLink(par,obj.url,obj.title);
+        var par = document.querySelector("#sources .content"); par.innerText = "";
+        if (background.sources.length == 0) {
+            var par = document.querySelector("#sources").style.display = "none";
         }
-		
+        else {
+            var par = document.querySelector("#sources").style.display = "block";
+            for(var i in background.sources) {
+                var obj = background.sources[i];
+                createLink(par,obj.url,obj.title);
+            }
+        }
+
         // background.sources.forEach(function(obj, i){
         //});
 

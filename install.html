@@ -20,7 +20,7 @@
 	</header>
 	<div class="center">
 		<div class="main">
-			<h2>Merci d’avoir installé le Décodex&nbsp; Insoumis !</h2>
+			<h2 style="color:green">Merci d’avoir installé le Décodex&nbsp; Insoumis !</h2>
 			<h3>Comment ça marche&nbsp;?</h3>
 			<p>
 				Le Décodex insoumis est un outil réalisé par l’équipe des Insoumis Numériques. Il vous permet d’afficher des informations sur les sites que vous visitez en parallèle de votre navigation par deux moyens :
@@ -29,84 +29,58 @@
 				<li>
 					Des informations détaillées qui <strong>apparaîtront en haut à droite de votre écran</strong> lorsque vous consulterez les sites (pop-up). Elles s’afficheront de la manière suivante :
 					<figure class="notifications">
-						<figcaption class="xs-display-none m-display-block">Notifications</figcaption>
 						<img style="max-width: 360px;" src="img/notifications@2x-min.png" alt="">
+						<figcaption>Quelques exemples d'infobulles</figcaption>
 					</figure>
 				</li>
 				<li>
 					Des informations à votre disposition <strong>en un clic à tout moment, via l’icône des Insoumis en haut à droite de votre navigateur</strong> :
 					<figure class="extension">
-						<figcaption class="xs-display-none m-display-block">Fenêtre</figcaption>
 						<img style="max-width: 260px;" src="img/extension@2x-min.png" alt="aperçu de l'extension">
+						<figcaption>La fenêtre d'information détaillée</figcaption>
 					</figure>
 				</li>
 			</ul>
 			<h3>Réglages avancés</h3>
 			<p>
 				Par défaut, le Décodex Insoumis affiche les informations détaillées pour chaque site dont nous avons connaissance. Mais vous pouvez vous-même paramétrer le Décodex Insoumis selon vos attentes. Pour chaque catégorie, vous pouvez choisir si vous souhaitez avoir des informations détaillées ou non.<br>
-                <br><b>Réglez ci-dessous le Décodex selon vos préférences</b>
 			</p>
-			<form action="#">
-				<h4>Afficher l'infobulle (pop-up)</h4>
-				<div class="form-group">
-					<div class="col-half">
-						<label for="check-alert0" class="inconnu">Média non noté</label>
-					</div>
-					<div class="col-half">
-						<input type="checkbox" id="check-alert0">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-half">
-						<label for="check-alert1" class="carrement-soumis">Médias carrément soumis</label>
-					</div>
-					<div class="col-half">
-						<input type="checkbox" id="check-alert1">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-half">
-						<label for="check-alert2" class="plutot-soumis">Médias plutôt soumis</label>
-					</div>
-					<div class="col-half">
-						<input type="checkbox" id="check-alert2">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-half">
-						<label for="check-alert3" class="plutot-insoumis">Médias plutôt Insoumis</label>
-					</div>
-					<div class="col-half">
-						<input type="checkbox" id="check-alert3">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-half">
-						<label for="check-alert4" class="media-insoumis">Médias insoumis</label>
-					</div>
-					<div class="col-half">
-						<input type="checkbox" id="check-alert4">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-half">
-						<label for="check-alert5" class="france-insoumise">Site partisan de la France Insoumise (du coup on vous laisse juge)</label>
-				</div>
-				<div class="col-half">
-					<input type="checkbox" id="check-alert5">
-				</div>
-			</div>
-			</form>
+				<h4>Réglez ici vos préférences pour l'affichage de l'infobulle</h4>
+
+                <div id="alert0" class="option-bulle">
+                    <label for="check-alert0"> <input id="check-alert0" type="checkbox"> Aucune information </label>
+                </div>
+                <div id="alert1" class="option-bulle">
+                    <label for="check-alert1"> <input id="check-alert1" type="checkbox"> Liens capitalistiques fort </label>
+                </div>
+                <div id="alert2" class="option-bulle">
+                    <label for="check-alert2"> <input id="check-alert2" type="checkbox"> Liens étatiques forts </label>
+                </div>
+                <div id="alert4" class="option-bulle">
+                    <label for="check-alert4"> <input id="check-alert4" type="checkbox"> Média indépendant: Bravo !  </label>
+                </div>
+                <div id="alert5" class="option-bulle">
+                    <label for="check-alert5"> <input id="check-alert5" type="checkbox"> France Insoumise (pas d'ambiguité !) </label>
+                </div>
+        </div>
+
 			<p class="font-small">
 				Vous pourrez retrouver à tout moment les informations disponibles sur une source en cliquant sur l’icône desInsoumiss en haut à droite de votre navigateur, puis sur l'icône en forme d'engrenage.
 			</p>
 			<div class="relative">
 				<p>
-					<strong>Vous consultez un site qui n’est pas dans notre base de données&nbsp;?  <span class="colored">NE PANIQUEZ PAS !</span,Il vous suffit de chercher par vous même les informations de ce média. En général, Wikipedia est une source assez fiable sur ce genre de chose&nbsp;!</strong>
+					<strong>Vous consultez un site qui n’est pas dans notre
+                        base de données&nbsp;?</strong>
+                        <div style="text-align:center">
+                            <span class="colored"><strong>NE PANIQUEZ PAS !</strong></span><br/>
+                        </div>
+                        Il vous suffit de chercher par vous même les informations de ce média.
+                    </strong>
 				</p>
-				<figure class="verifier">
+
+				<!--<figure class="verifier">
 					<img style="max-width: 360px;" src="img/verifier@2x-min.png" alt="">
-				</figure>
+                </figure>-->
 			</div>
 		</div>
 	</div>

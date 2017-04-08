@@ -13,18 +13,20 @@
         </header>
         <div class="content" id="decodex-insoumis-window">
             <h2 id="site-name"></h2>
+            <p id="notule"></p>
             <table class="table-popup-insoumis">
-                <tr><td colspan="2">
-                        <p id="les-decodeurs"><span id="comment"></span><span id="description"></span>.</p>
+                <tr class="les-decodeurs"><td colspan="2">
+                        <p id="les-decodeurs">
+                            <span id="comment"></span>:
+                            <span id="description"></span></p>
                 </td></tr>
-                <tr><td colspan="2">
+                <tr class="ligne-owner-msg"><td colspan="2">
                         <p id="owner-msg"></p>
                 </td></tr>
-                <tr id="proprietaire0"> <td class="nom"></td> <td class="detail"></td> </tr>
-                <tr id="proprietaire1"> <td class="nom"></td> <td class="detail"></td> </tr>
-                <tr id="proprietaire2"> <td class="nom"></td> <td class="detail"></td> </tr>
+                <tr id="proprietaire0" class="ligne-proprietaire"> <th class="nom"></th> <td class="detail"></td> </tr>
+                <tr id="proprietaire1" class="ligne-proprietaire"> <th class="nom"></th> <td class="detail"></td> </tr>
+                <tr id="proprietaire2" class="ligne-proprietaire"> <th class="nom"></th> <td class="detail"></td> </tr>
             </table>
-            <p id="notule"></p>
             <p id="our-opinion" class="our-opinion"></p>
             <!-- @TODO: le design. Faire plus tableau ? -->
             <!-- <div id="fortunes"><span class="label">Fortunes : </span><span class="content"></span></div>          -->
@@ -35,7 +37,10 @@
             <!--<div id="interests"><span class="label">Intérêts : </span><span class="content"></span></div>              -->
             <!--<div id="conflicts"><span class="label">Exemples de conflit d'intérêts : </span><span class="content"></span></div>-->
             <!--<div id="subsidies"><span class="label">Subventions (en euros en 2015) : </span><span class="content"></span></div>-->
-            <div id="sources"><span class="label">Nos sources : </span><span class="content"></span></div>
+            <div id="sources">
+                <span class="label">Nos sources : </span>
+                <span class="content"></span>
+            </div>
             <a id="more-info-insoumis" target="_blank" class="button more" href="https://laec.fr/section/8/la-revolution-citoyenne-dans-les-medias" >En savoir plus</a>
         </div>
 

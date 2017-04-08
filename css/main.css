@@ -11,7 +11,6 @@ html{
 
 body{
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 1em;
 	line-height: 1.4;
 	margin: 0;
 	color: #16212c;
@@ -244,10 +243,43 @@ footer {
 #proprietaires{
 }
 
-.table-popup-insoumis {
-    border-collapse: collapse;
-    border : 1px solid black;
+#decodex-insoumis-window {
+    text-align : center;
 }
-.table-popup-insoumis td{
-    border : 1px solid black;
+
+.table-popup-insoumis {
+    /*border-collapse: collapse;*/
+    /* border : 1px solid black;*/
+    margin : auto;
+    width  : auto;
+}
+.table-popup-insoumis td,
+.table-popup-insoumis th{
+    background-color : #eee;
+    padding          : 6px 3px;
+    vertical-align   : middle;
+    /*border : 1px solid black;*/
+}
+
+.table-popup-insoumis th {
+    text-align : right;
+    padding    : 7px;
+}
+.table-popup-insoumis td {
+    text-align : left;
+}
+.table-popup-insoumis #les-decodeurs {
+    text-align : center;
+}
+.table-popup-insoumis #les-decodeurs #description {
+    display : block;
+    font-weight : bold;
+    font-size : 14px;
+}
+.ligne-owner-msg td{
+    vertical-align : bottom;
+}
+.ligne-owner-msg #owner-msg{
+    margin : 0;
+    padding-top : 6px;
 }
