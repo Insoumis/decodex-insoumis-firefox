@@ -108,7 +108,7 @@ let messages = [
     "non classé",
     // rouge
     //"Selon les critères retenus, ce média n'est pas indépendant. Cette catégorie regroupe les médias appartenant a de grands groupes industriels ou puissance financières qui peuvent influencer le traitement de l'information ou la ligne éditoriale. Quoi qu'il en soit, nous vous conseillons de chercher une ou plusieurs source alternative à l'information que vous lisez, voir opposée, en particulier si cette presse confirme vos idées.en particulier si cette presse confirme vos idées.",
-    "Ce média est contrôlé par des puissances financières.",
+    "Ce média est contrôlé par un ou plusieurs groupes d'intérêts industriels, financiers, ou de presse.",
     // jaune
     "Ce média est contrôlé par un ou plusieurs états",
     //"Selon les critères retenus, ce média n'est pas vraiment indépendant. Cette catégorie regroupe les médias gérés par l'état français ou un état étranger. Ce type de média est en général moins soumis aux sphères financières, mais cela ne veut pas dire qu'il ne faut pas chercher une ou plusieurs source alternative à l'information que vous lisez, en particulier si cette presse confirme la version officielle de l'état concerné.",
