@@ -178,15 +178,18 @@ function main() {
         //document.querySelector("#conflicts span.content").innerText = background.conflits;
         //document.querySelector("#subsidies span.content").innerText = background.subventions;
 
-        var par = document.querySelector("#sources .content"); par.innerText = "";
+        var source_wrapper = document.querySelector("#sources");
+        var target_sources = document.querySelector("#sources .content");
+        target_sources.innerText = "";
+
         if (background.sources.length == 0) {
-            var par = document.querySelector("#sources").style.display = "none";
+            source_wrapper.style.display = "none";
         }
         else {
-            var par = document.querySelector("#sources").style.display = "block";
+            source_wrapper.style.display = "block";
             for(var i in background.sources) {
                 var obj = background.sources[i];
-                createLink(par,obj.url,obj.title);
+                createLink(target_sources, obj.url, obj.title);
             }
         }
 
