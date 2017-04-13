@@ -139,7 +139,7 @@ function main() {
             document.querySelector("#les-decodeurs #description").innerText = background.decodex_desc;
         }
         else {
-            document.querySelector("#les-decodeurs").innerText = "Les Décodeurs du Monde ne connaissent pas ce site";
+            document.querySelector("#les-decodeurs").innerText = "Les Décodeurs du Monde n'ont pas noté ce site. Ils le considèrent (peut être) comme fiable ou ne le connaissent pas.";
         }
 
         document.querySelector("#owner-msg").innerText = background.owner_msg;
